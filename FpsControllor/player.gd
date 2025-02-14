@@ -14,45 +14,45 @@ var headbob_time = 0.0
 #Character stats
 @export var health := 100.0
 @export var max_health := 100.0
-
-@export var aptitude : String = " "
-@export var attribute_available_points :int = 6
-
-@export var attributes = {
-	"constitution" : 4,
-	"strength" : 5,
-	"perception" : 6
-}
-@export var skill_available_points :int = 10
-
-@export var skills = {
-	"endurance" = 0,
-	"resilience" = 0,
-	"melee" = 0,
-	"intimidation" = 0,
-	"handguns" = 0,
-	"longguns" = 0
-}
-
-var skills_influence = {
-	"endurance" : 1,
-	"resilience" : 0,
-	"melee" : 1,
-	"intimidation" : 0,
-	"handguns" : 0,
-	"longguns" : 0
-} 
-
-var skills_attribute = {
-	"endurance": 0,
-	"resilience": 0,
-	"melee": 0,
-	"intimidation": 0,
-	"handguns": 0,
-	"longguns": 0
-}
-@export var perk_available_points :int = 0
-
+@export var currency := 1000
+#@export var aptitude : String = " "
+#@export var attribute_available_points :int = 6
+#
+#@export var attributes = {
+	#"constitution" : 4,
+	#"strength" : 5,
+	#"perception" : 6
+#}
+#@export var skill_available_points :int = 10
+#
+#@export var skills = {
+	#"endurance" = 0,
+	#"resilience" = 0,
+	#"melee" = 0,
+	#"intimidation" = 0,
+	#"handguns" = 0,
+	#"longguns" = 0
+#}
+#
+#var skills_influence = {
+	#"endurance" : 1,
+	#"resilience" : 0,
+	#"melee" : 1,
+	#"intimidation" : 0,
+	#"handguns" : 0,
+	#"longguns" : 0
+#} 
+#
+#var skills_attribute = {
+	#"endurance": 0,
+	#"resilience": 0,
+	#"melee": 0,
+	#"intimidation": 0,
+	#"handguns": 0,
+	#"longguns": 0
+#}
+#@export var perk_available_points :int = 0
+#
 @export var perks = {
 	"1a" : false,
 	"1b" : false,
@@ -64,12 +64,50 @@ var skills_attribute = {
 	"3b" : false,
 	"3c" : false,
 }
-@export var experience = {
-	"curr_lvl_exp" : 0,
-	"total_exp" : 0,
-	"req_exp" : 0
+
+@export var weapons = {
+	"deagle" :  {
+				"name" : "deagle",
+				"owned" : false,
+				"price" : 1,
+				"description" : "This is the Description for deagle",
+				"file_path": "res://FpsControllor/weapon_manager/deagle/deagle.tres"
+				},
+	"p90" : 	    {
+				"name" : "p90",
+				"owned" : false,
+				"price" : 1,
+				"description" : "This is the Description for p90",
+				"file_path": "res://FpsControllor/weapon_manager/p90/p90.tres"
+				},
+	"knife" :   {
+				"name" : "knife",
+				"owned" : true,
+				"price" : 1,
+				"description" : "This is the Description for knife",
+				"file_path": "res://FpsControllor/weapon_manager/knife/knife.tres"
+				},
+	"rpg" :     {
+				"name" : "rpg",
+				"owned" : false,
+				"price" : 1,
+				"description" : "This is the Description for rpg",
+				"file_path": "res://FpsControllor/weapon_manager/rpg/rpg.tres"
+				},
+	"grenade" : {
+				"name" : "grenade",
+				"owned" : false,
+				"price" : 1,
+				"description" : "This is the Description for nade",
+				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				},
 }
-@export var curr_level = 1
+#@export var experience = {
+	#"curr_lvl_exp" : 0,
+	#"total_exp" : 0,
+	#"req_exp" : 0
+#}
+#@export var curr_level = 1
 
 
 #Ground movement settings
@@ -123,7 +161,7 @@ func take_damage(damage: float, dmg_type: String):
 	if perks["3b"] == true:
 		if dmg_type == "explosion":
 			return
-	var final_damage = damage * (max(0.5, 1 - skills_influence["resilience"]))
+	var final_damage = damage 
 	if perks["1c"] == true:
 		final_damage = $LevellingSystem.tough_skin(final_damage)
 	health -= int(final_damage)
@@ -139,7 +177,7 @@ func take_damage(damage: float, dmg_type: String):
 	
 	
 var is_sprinting :bool = false 
-var sprint_limit: float = 5.0 * skills_influence["endurance"]
+var sprint_limit: float = 5.0 
 var sprint_remaining_time := sprint_limit
 var sprint_cooldown: float = 3.0
 var sprint_cooldown_remaining: float = 0.0
@@ -147,8 +185,8 @@ func get_speed() -> float:
 	var speed = walk_speed
 	if is_crouched:
 		speed *=  0.75
-	if  is_sprinting:
-		speed *= sprint_multi * skills_influence["endurance"]
+	if not is_crouched and is_sprinting:
+		speed *= sprint_multi 
 	if $LevellingSystem.deserter_active :
 		speed *= 2
 	return speed
@@ -457,25 +495,25 @@ func _handle_noclip(delta) -> bool:
 #func return_req_exp():
 	#experience["req_exp"] = $LevellingSystem.experience_required
 	
-func gain_exp(amt: int):
-	$LevellingSystem.gain_experience(amt)
+func gain_money(amt: int):
+	currency += amt
 	#return_req_exp()
 	
-func on_level_up(skill_points_gain: int):
-
-	health = max_health
-	skill_available_points += skill_points_gain
-	curr_level = $LevellingSystem.curr_level
-	if curr_level %2 == 0:
-		skill_available_points += skill_points_gain
-		perk_available_points += 1
-		$PlayerHUD.get_node("Reminder").set_text("Level Up!!!" + "\n" + "New Perk Point Gained!!!")
-		$PlayerHUD.get_node("Reminder").set_visible(true)
-	else:
-		$PlayerHUD.get_node("Reminder").set_text("Level Up!!!")
-		$PlayerHUD.get_node("Reminder").set_visible(true)
-	await get_tree().create_timer(3.0).timeout
-	$PlayerHUD.get_node("Reminder").set_visible(false)
+#func on_level_up(skill_points_gain: int):
+#
+	#health = max_health
+	#skill_available_points += skill_points_gain
+	#curr_level = $LevellingSystem.curr_level
+	#if curr_level %2 == 0:
+		#skill_available_points += skill_points_gain
+		#perk_available_points += 1
+		#$PlayerHUD.get_node("Reminder").set_text("Level Up!!!" + "\n" + "New Perk Point Gained!!!")
+		#$PlayerHUD.get_node("Reminder").set_visible(true)
+	#else:
+		#$PlayerHUD.get_node("Reminder").set_text("Level Up!!!")
+		#$PlayerHUD.get_node("Reminder").set_visible(true)
+	#await get_tree().create_timer(3.0).timeout
+	#$PlayerHUD.get_node("Reminder").set_visible(false)
 @onready var animation_tree : AnimationTree = $"WorldModel/desert droid container/AnimationTree"
 @onready var state_machine_playback : AnimationNodeStateMachinePlayback = $"WorldModel/desert droid container/AnimationTree".get("parameters/playback")
 
@@ -515,7 +553,7 @@ func _physics_process(delta: float) -> void:
 		sprint_cooldown_remaining -= delta
 		if sprint_cooldown_remaining < 0.0:
 			sprint_cooldown_remaining = 0.0
-	var wants_to_sprint = Input.is_action_pressed("sprint")
+	var wants_to_sprint = Input.is_action_pressed("sprint") and not is_crouched
 	if wants_to_sprint:
 		if sprint_cooldown_remaining <= 0.0 and sprint_remaining_time > 0.0:
 			is_sprinting = true

@@ -41,6 +41,8 @@ extends Resource
 @export var v_recoil : float
 @export var h_recoil : float
 @export var damage = 10
+@export var max_weapon_lvl := 3
+@export var weapon_lvl :int = 0
 
 @export var bullet_spread : float = 1
 @export var bullet_range : float = 100
@@ -96,9 +98,9 @@ func reload_pressed():
 	var cancel_cb = (func():
 		weapon_manager.stop_sounds())
 	if slot == 2:
-		weapon_manager.play_anim(view_reload_anim, reload, cancel_cb, get_player_handguns())
+		weapon_manager.play_anim(view_reload_anim, reload, cancel_cb)
 	else: 
-		weapon_manager.play_anim(view_reload_anim, reload, cancel_cb, get_player_longguns())
+		weapon_manager.play_anim(view_reload_anim, reload, cancel_cb)
 	weapon_manager.queue_anim(view_idle_anim)
 	weapon_manager.play_sound(reload_sound)
 
@@ -140,12 +142,23 @@ func check_perk_pr():
 	pack_rat = weapon_manager.get_parent().perks["2c"]
 	return weapon_manager.get_parent().perks["2c"]
 
-func get_player_handguns():
-	#print(weapon_manager.get_parent().skills_influence["handguns"])
-	return weapon_manager.get_parent().skills_influence["handguns"]
+var damage_multi = 1
+var recoil_multi = 1
 
-func get_player_longguns():
-	return weapon_manager.get_parent().skills_influence["longguns"]
+func weapon_update():
+	if weapon_lvl < max_weapon_lvl:
+		weapon_lvl += 1
+		damage_multi += 1
+		recoil_multi -= 0.2
+		bullet_spread -= 0.2
+		
+		
+#func get_player_handguns():
+	##print(weapon_manager.get_parent().skills_influence["handguns"])
+	#return weapon_manager.get_parent().skills_influence["handguns"]
+
+#func get_player_longguns():
+	#return weapon_manager.get_parent().skills_influence["longguns"]
 
 var num_shots_fired : int = 0
 func fire_shot():
@@ -172,15 +185,7 @@ func fire_shot():
 	if check_perk_cb() == true:
 		raycast.target_position = Vector3(spread_x * 0.1,spread_y *0.1,-abs(bullet_range))
 	else:
-		#handgun
-		if slot == 2:
-			#print(max(0, (1- get_player_handguns())))
-			raycast.target_position = Vector3(max(0.5, (1- get_player_handguns())) * spread_x,max(0.5, (1- get_player_handguns())) * 
-												spread_y,-abs(bullet_range))
-		#longgun
-		else:
-			raycast.target_position = Vector3(max(0.5, (1- get_player_longguns())) * spread_x,max(0.5, (1- get_player_longguns())) * 
-												spread_y,-abs(bullet_range))
+		raycast.target_position = Vector3(spread_x, spread_y,-abs(bullet_range))
 	raycast.force_raycast_update()
 	
 	var bullet_target_pos = raycast.global_transform * raycast.target_position
@@ -193,19 +198,12 @@ func fire_shot():
 		if obj is RigidBody3D:
 			obj.apply_impulse(-nrml * impact_force / obj.mass, pt -obj.global_position)
 		if obj.has_method("take_damage"):
-			obj.take_damage(self.damage, " ")
+			obj.take_damage(self.damage * damage_multi, " ")
 			
 	weapon_manager.show_muzzle_flash()
 	if num_shots_fired % 3 == 0:
 		weapon_manager.make_bullet_trail(bullet_target_pos)
-	#handgun
-	if slot == 2:
-		weapon_manager.apply_recoil(max(0.5, (1- get_player_handguns())) * v_recoil, 
-									max(0.5, (1- get_player_handguns())) * h_recoil)
-	#longgun
-	else:
-		weapon_manager.apply_recoil(max(0.5, (1- get_player_longguns())) * v_recoil, 
-									max(0.5, (1- get_player_longguns())) * h_recoil)
+	weapon_manager.apply_recoil(v_recoil * recoil_multi, h_recoil * recoil_multi)
 	last_fire_time = Time.get_ticks_msec()
 	current_ammo -= 1
 	num_shots_fired += 1

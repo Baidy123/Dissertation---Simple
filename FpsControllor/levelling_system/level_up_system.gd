@@ -12,10 +12,10 @@ var perception : int = 0
 
 #var experience : int = 0
 #var experience_total : int = 0
-var experience_required : int = get_required_experience(curr_level + 1)
+#var experience_required : int = get_required_experience(curr_level + 1)
 
 
-@export var slow_factor = 0.5
+@export var slow_factor = 0.4
 @export var dmg_reduce_rate = 0.5
 
 @export var speed_boost_multiplier: float = 2.0
@@ -23,65 +23,47 @@ var experience_required : int = get_required_experience(curr_level + 1)
 	"1a": {
 		"name": "qinggong",
 		"description": "Enables double jumping and significantly enhances aerial maneuverability.",
-		"attribute": {"constitution": 6},
-		"skill": {"endurance": 60},
-		"points": 1
+		"currency": 1
 	},
 	"1b": {
 		"name": "bullet time",
 		"description": "Slows down time.",
-		"attribute": {"perception": 6},
-		"skill": {"longguns": 60},
-		"points": 1
+		"currency": 1
 	},
 	"1c": {
 		"name": "tough skin",
 		"description": "Significantly reduces damage from enemy attacks.",
-		"attribute": {"constitution": 9},
-		"skill": {"resilience": 100},
-		"points": 1
+		"currency": 1
 	},
 	"2a": {
 		"name": "deserter",
 		"description": "Greatly increases the character's movement speed in seconds after being attacked .",
-		"attribute": {"constitution": 4},
-		"skill": {"endurance": 45},
-		"points": 1
+		"currency": 1
 	},
 	"2b": {
 		"name": "cowboy",
 		"description": "Greatly improves weapon accuracy while moving, reduces recoil.",
-		"attribute": {"perception": 9},
-		"skill": {"handguns": 100},
-		"points": 1
+		"currency": 1
 	},
 	"2c": {
 		"name": "pack rat",
 		"description": "Doubles the character's ammunition reserves.",
-		"attribute": {"constitution": 4},
-		"skill": {"endurance": 45},
-		"points": 1
+		"currency": 1
 	},
 	"3a": {
 		"name": "vampire",
 		"description": "Restores a small amount of health after attacking an enemy in melee combat.",
-		"attribute": {"strength": 6},
-		"skill": {"melee": 60},
-		"points": 1
+		"currency": 1
 	},
 	"3b": {
 		"name": "flak jacket",
 		"description": "Prevents the character from taking damage from explosions.",
-		"attribute": {"constitution": 4},
-		"skill": {"resilience": 45},
-		"points": 1
+		"currency": 1
 	},
 	"3c": {
 		"name": "die hard",
 		"description": " Grants 2 seconds of invincibility when taking a fatal hit, with a cooldown of 4 minutes.",
-		"attribute": {"strength": 9},
-		"skill": {"intimidation": 100},
-		"points": 1
+		"currency": 1
 	}
 }
 @export var bullet_time_cd := 0.0
@@ -89,51 +71,52 @@ var experience_required : int = get_required_experience(curr_level + 1)
 @export var die_hard_cd := 0.0
 
 func _ready() -> void:
-	constitution = player.attributes["constitution"]
-	strength = player.attributes["strength"]
-	perception = player.attributes["perception"]
-	curr_level = player.curr_level
-	player.experience["req_exp"] = experience_required
+	pass
+	#constitution = player.attributes["constitution"]
+	#strength = player.attributes["strength"]
+	#perception = player.attributes["perception"]
+	#curr_level = player.curr_level
+	#player.experience["req_exp"] = experience_required
 
-func get_required_experience(level):
-	if curr_level < max_level:
-		return round(200 * (pow(level, 2) + level * 4))
-	else :
-		return 0 #round(200 * (pow(max_level - 1, 2) + (max_level - 1) * 4))
+#func get_required_experience(level):
+	#if curr_level < max_level:
+		#return round(200 * (pow(level, 2) + level * 4))
+	#else :
+		#return 0 #round(200 * (pow(max_level - 1, 2) + (max_level - 1) * 4))
 		
-func gain_experience(amount):
-	if curr_level >= max_level:
-		player.experience["curr_lvl_exp"] = 0
-		return
-	if curr_level < max_level:
-		player.experience["total_exp"] += amount
-		player.experience["curr_lvl_exp"] += amount
-		while player.experience["curr_lvl_exp"] >= experience_required:
-			player.experience["curr_lvl_exp"] -= experience_required
-			level_up()
-			if curr_level >= max_level:
-				player.experience["curr_lvl_exp"] = 0
-				break
+#func gain_experience(amount):
+	#if curr_level >= max_level:
+		#player.experience["curr_lvl_exp"] = 0
+		#return
+	#if curr_level < max_level:
+		#player.experience["total_exp"] += amount
+		#player.experience["curr_lvl_exp"] += amount
+		#while player.experience["curr_lvl_exp"] >= experience_required:
+			#player.experience["curr_lvl_exp"] -= experience_required
+			#level_up()
+			#if curr_level >= max_level:
+				#player.experience["curr_lvl_exp"] = 0
+				#break
 
-func level_up():
-	if curr_level < max_level:
-		curr_level += 1
-		experience_required = get_required_experience(curr_level + 1)
-		player.experience["req_exp"] = experience_required
-		if player and player.has_method("on_level_up"):
-			player.on_level_up(skill_points_gained)
-			print(curr_level)
-			
-			print(experience_required)
+#func level_up():
+	#if curr_level < max_level:
+		#curr_level += 1
+		#experience_required = get_required_experience(curr_level + 1)
+		#player.experience["req_exp"] = experience_required
+		#if player and player.has_method("on_level_up"):
+			#player.on_level_up(skill_points_gained)
+			#print(curr_level)
+			#
+			#print(experience_required)
 			
 
 		#print("Level up! current level:", curr_level)
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("gain_exp"):
-		gain_experience(10000)
-		print(player.experience["total_exp"])
-		print(player.experience["curr_lvl_exp"])
-		#player.take_damage(20, " ")
+		#gain_experience(10000)
+		#print(player.experience["total_exp"])
+		#print(player.experience["curr_lvl_exp"])
+		player.take_damage(20, " ")
 	
 		
 #PERKS

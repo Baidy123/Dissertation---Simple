@@ -29,7 +29,10 @@ var current_weapon_world_model : Node3D
 	
 @onready var audio_stream_player = $AudioStreamPlayer3D
 
-
+func add_weapon(new_weapon: Resource) -> void:
+	equipped_weapons.append(new_weapon)
+	print("Weapon added:", new_weapon)
+	
 func update_weapon_model():
 	if current_weapon_view_model != null and is_instance_valid(current_weapon_view_model):
 		current_weapon_view_model.queue_free()
@@ -112,9 +115,8 @@ var last_played_anim : String = ""
 var current_anim_finished_callback
 var current_anim_cancelled_callback
 
-func play_anim(name : String, finished_callback = null, cancelled_callback = null, play_speed = 0.0):
+func play_anim(name : String, finished_callback = null, cancelled_callback = null):
 	var anim_player : AnimationPlayer = current_weapon_view_model.get_node_or_null("AnimationPlayer")
-	anim_player.speed_scale = 1 + play_speed * 1.5
 	if last_played_anim and get_anim() == last_played_anim and current_anim_cancelled_callback is Callable:
 		current_anim_cancelled_callback.call() # Last anim didn't finish yet
 	
@@ -182,7 +184,9 @@ func apply_recoil(ver_recoil : float, hor_recoil : float):
 	
 func get_current_recoil():
 	return player.get_current_recoil() if player.has_method("get_current_recoil") else Vector2()
+	
 
+	
 func _unhandled_input(event) -> void:
 	if current_weapon and is_inside_tree() and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event.is_action_pressed("shoot") and allow_shoot and not is_reloading:

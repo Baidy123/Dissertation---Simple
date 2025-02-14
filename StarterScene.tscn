@@ -312,7 +312,7 @@ func _process(delta: float) -> void:
 func take_damage(amount : int, type : String):
 	hp -= amount
 	if hp <= 0:
-		%Player.gain_exp(2000)
+		%Player.gain_money(200)
 		self.queue_free()
 		$\"../AudioStreamPlayer3D\".play()
 

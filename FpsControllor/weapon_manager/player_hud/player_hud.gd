@@ -117,6 +117,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Update weapon switch menu visibility
+	$CurrencyReminder.text = "   $ " + str(player.currency)
 	%WeaponSwitchMenu.modulate = Color(1, 1, 1, get_weapon_menu_visibility())
 	weapon_manager.allow_shoot = get_weapon_menu_visibility() != 1.0
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://frw4yydmklj"]
+[gd_scene load_steps=21 format=3 uid="uid://frw4yydmklj"]
 
 [ext_resource type="Script" path="res://FpsControllor/weapon_manager/player_hud/player_hud.gd" id="1_d4a5r"]
 [ext_resource type="Texture2D" uid="uid://bnrv4au7iny0k" path="res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-dot.svg" id="1_xqwyd"]
@@ -53,15 +53,7 @@ font_color = Color(0.439216, 0.803922, 1, 1)
 font_size = 45
 font_color = Color(0.439216, 0.803922, 1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_pwl2h"]
-font_size = 65
-font_color = Color(0.439216, 0.803922, 1, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_t6dew"]
-font_size = 30
-font_color = Color(0.439216, 0.803922, 1, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_n3ph5"]
 font_size = 30
 font_color = Color(0.439216, 0.803922, 1, 1)
 
@@ -252,15 +244,7 @@ label_settings = SubResource("LabelSettings_fqmlv")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Reminder" type="Label" parent="."]
-layout_mode = 0
-offset_left = 426.0
-offset_top = 73.0
-offset_right = 777.0
-offset_bottom = 242.0
-label_settings = SubResource("LabelSettings_pwl2h")
-
-[node name="BulletTimeReminder" type="Label" parent="."]
+[node name="CurrencyReminder" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -271,16 +255,4 @@ offset_right = 132.0
 offset_bottom = -35.0
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_t6dew")
-vertical_alignment = 1
-
-[node name="DieHardReminder" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 2.0
-offset_right = 172.0
-offset_bottom = 90.0
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_n3ph5")
 vertical_alignment = 1

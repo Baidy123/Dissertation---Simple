@@ -21,8 +21,8 @@ func fire_shot():
 		var obj = raycast.get_collider()
 		var nrml = raycast.get_collision_normal()
 		var pt = raycast.get_collision_point()
-		var dmg_increase = weapon_manager.get_parent().skills_influence["melee"]
-		var chance_to_knock_back = weapon_manager.get_parent().skills_influence["intimidation"]
+		#var dmg_increase = weapon_manager.get_parent().skills_influence["melee"]
+		#var chance_to_knock_back = weapon_manager.get_parent().skills_influence["intimidation"]
 		bullet_target_pos = pt
 		BulletDecalPool.spawn_bullet_decal(pt, nrml, obj, raycast.global_basis, preload("res://FpsControllor/weapon_manager/knifedecal.png"))
 		if obj is RigidBody3D:
@@ -35,12 +35,11 @@ func fire_shot():
 			blood_splatter.global_position = pt
 		elif obj.has_method("take_damage"):
 
-			obj.take_damage(self.damage * dmg_increase, " ")
-			if randf() < chance_to_knock_back:
-				obj.apply_impulse(-nrml * 100.0 / obj.mass, pt - obj.global_position)
+			obj.take_damage(self.damage, " ")
+			
 		if weapon_manager.get_parent().perks["3a"] == true:
 			if weapon_manager.get_parent().health < weapon_manager.get_parent().max_health:
-				weapon_manager.get_parent().health += int(self.damage * 0.1 * dmg_increase)
+				weapon_manager.get_parent().health += int(self.damage * 0.1)
 	else:
 		weapon_manager.play_sound(miss_sound)
 	
