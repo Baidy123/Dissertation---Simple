@@ -204,13 +204,6 @@ size_flags_horizontal = 6
 text = "DEAGLE"
 label_settings = SubResource("LabelSettings_76qm8")
 
-[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/deagle/Panel/Stats"]
-visible = false
-layout_mode = 2
-text = "5
-"
-label_settings = SubResource("LabelSettings_cj8g5")
-
 [node name="Deagle" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/deagle/Panel" groups=["WeaponButtons"]]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 1
@@ -262,19 +255,14 @@ size_flags_horizontal = 6
 text = "P90"
 label_settings = SubResource("LabelSettings_76qm8")
 
-[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/p90/Panel/Stats"]
-visible = false
-layout_mode = 2
-text = "5
-"
-label_settings = SubResource("LabelSettings_cj8g5")
-
 [node name="P90" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/p90/Panel" groups=["WeaponButtons"]]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="rpg" type="Control" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName"]
 custom_minimum_size = Vector2(0, 60)
@@ -318,13 +306,6 @@ size_flags_horizontal = 6
 text = "RPG"
 label_settings = SubResource("LabelSettings_76qm8")
 
-[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/rpg/Panel/Stats"]
-visible = false
-layout_mode = 2
-text = "5
-"
-label_settings = SubResource("LabelSettings_cj8g5")
-
 [node name="RPG" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/rpg/Panel" groups=["WeaponButtons"]]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 1
@@ -356,12 +337,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_27bf2")
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Weapon4/Panel"]
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-
 [node name="Stats" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Weapon4/Panel"]
 custom_minimum_size = Vector2(240, 45)
 layout_mode = 1
@@ -371,9 +346,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -120.0
-offset_top = -20.0
+offset_top = -22.5
 offset_right = 120.0
-offset_bottom = 20.0
+offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -388,6 +363,14 @@ layout_mode = 2
 text = "5
 "
 label_settings = SubResource("LabelSettings_cj8g5")
+
+[node name="Weapon4" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Weapon4/Panel" groups=["WeaponButtons"]]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+offset_left = 125.0
+offset_top = 285.0
+offset_right = 525.0
+offset_bottom = 335.0
 
 [node name="Weapon5" type="Control" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName"]
 visible = false
@@ -411,12 +394,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_27bf2")
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Weapon5/Panel"]
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-
 [node name="Stats" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Weapon5/Panel"]
 custom_minimum_size = Vector2(240, 45)
 layout_mode = 1
@@ -426,9 +403,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -120.0
-offset_top = -20.0
+offset_top = -22.5
 offset_right = 120.0
-offset_bottom = 20.0
+offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -443,6 +420,64 @@ layout_mode = 2
 text = "5
 "
 label_settings = SubResource("LabelSettings_cj8g5")
+
+[node name="Weapon5" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Weapon5/Panel" groups=["WeaponButtons"]]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+offset_left = 125.0
+offset_top = 345.0
+offset_right = 525.0
+offset_bottom = 395.0
+
+[node name="Medkit" type="Control" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Medkit"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -25.0
+offset_right = 125.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_27bf2")
+
+[node name="Stats" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Medkit/Panel"]
+custom_minimum_size = Vector2(240, 45)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -22.5
+offset_right = 120.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Medkit/Panel/Stats"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "First Aid Kit"
+label_settings = SubResource("LabelSettings_76qm8")
+
+[node name="Medkit" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName/Medkit/Panel" groups=["WeaponButtons"]]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 251.0
+offset_bottom = 49.0
 
 [node name="PurchaseButton" type="TextureButton" parent="HBoxContainer/VBoxContainer/Weapons/WeaponName"]
 unique_name_in_owner = true

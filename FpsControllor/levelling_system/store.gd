@@ -5,7 +5,8 @@ extends Control
 #var skill_available_points : int
 #var attribute_available_points : int 
 var currency :int 
-var selected_weapon_id := ""
+var selected_item_id := ""
+var selected_item_type := ""
 #
 #var constitution_add = 0
 #var strength_add = 0
@@ -82,53 +83,88 @@ func _ready() -> void:
 			#button.set_disabled(false)
 			#button.set_visible(true)
 func _on_weapon_button_pressed(weapon_button_name: String) -> void:
-	# weapon_button_name 可能是 "pistol_button", "rifle_button", etc.
-	# 你可以把按钮的名称和 weapons_info 里的 key 对应，也可以在按钮脚本或 metadata 中存真正的 weapon_id。
-	# 下面演示最简单的情况：假设你的按钮名字就直接等于武器id (pistol, rifle)
-	# 如果不一样，可以使用 Dictionary 或 metadata 去映射。
-	selected_weapon_id = weapon_button_name.to_lower()
+
+	selected_item_id = weapon_button_name.to_lower()
 
 	# 从字典里获取相应信息
-	if character.weapons.has(selected_weapon_id):
-		var w_info = character.weapons[selected_weapon_id]
+	if character.weapons.has(selected_item_id):
+		var w_info = character.weapons[selected_item_id]
+		selected_item_type = w_info["type"]
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/NameLabel.text = w_info["name"]
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/CostLabel.text = "Cost: " + str(w_info["price"])
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/DescLabel.text = w_info["description"]
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/WarningLabel.text = ""
 	else:
 		# 如果没找到
-		selected_weapon_id = ""
+		selected_item_id = ""
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/NameLabel.text = ""
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/CostLabel.text = ""
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/DescLabel.text = "Weapon not found..."
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/WarningLabel.text = ""
 		
+
 func _on_purchase_button_pressed() -> void:
-	if selected_weapon_id == "":
+	if selected_item_id == "":
 		%Warning.text = "No weapon selected."
 		return
 
-	if not character.weapons.has(selected_weapon_id):
+	if not character.weapons.has(selected_item_id):
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/WarningLabel.text = "Invalid weapon."
 		return
 
-	var w_info = character.weapons[selected_weapon_id]
+	var w_info = character.weapons[selected_item_id]
 	var cost = w_info["price"]
 
 	# 1. 检查玩家金钱
 	if currency < cost:
 		%Warning.text = "Not enough money!"
 		return
+	match w_info["type"]:
+		"weapon":
+			_buy_weapon_logic(w_info)
+		"medkit":
+			_buy_medkit_logic(w_info)
+		_:
+			# 其它类型, 按需扩展
+			$ItemInfo/WarningLabel.text = "Unknown item type!"
+	## 2. 扣除金钱
+	#currency -= cost
+	#character.weapons[selected_item_id]["owned"] = true
+	#_update_weapon_buttons()
+	#selected_item_id = ""
+	#
+	#
+	## 4. 加载对应的 .tres 并添加到玩家的武器管理器
+	#var weapon_file_path = w_info["file_path"]
+	#var weapon_resource = load(weapon_file_path)
+	#if weapon_resource == null:
+		#$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/WarningLabel.text = "Weapon resource not found: " + weapon_file_path
+		#return
+#
+	## 假设你的 Player 节点或 WeaponManager 有一个 add_weapon(res) 方法
+	#var weapon_manager = get_node("../../Player/WeaponManager")  # 修改成你实际的路径
+	#if weapon_manager and weapon_manager.has_method("add_weapon"):
+		#weapon_manager.add_weapon(weapon_resource)
+	#else:
+		#$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/WarningLabel.text = "Can't add weapon. WeaponManager not found or missing add_weapon method."
+#
+	## 5. 提示购买成功
+	#%Warning.text = "Purchase success!"
+func _buy_weapon_logic(info: Dictionary) -> void:
+	if info["owned"] == true:
+		%Warning.text = "You already own this weapon!"
+		return
+	
+	# 扣钱
+	currency -= info["price"]
 
-	# 2. 扣除金钱
-	currency -= cost
-	character.weapons[selected_weapon_id]["owned"] = true
+	# 设置 owned = true
+	info["owned"] = true
+	
+	# 隐藏按钮 (若你想让已拥有武器按钮消失)
 	_update_weapon_buttons()
-	selected_weapon_id = ""
 	
-	
-	# 4. 加载对应的 .tres 并添加到玩家的武器管理器
-	var weapon_file_path = w_info["file_path"]
+	var weapon_file_path = info["file_path"]
 	var weapon_resource = load(weapon_file_path)
 	if weapon_resource == null:
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/WarningLabel.text = "Weapon resource not found: " + weapon_file_path
@@ -141,24 +177,47 @@ func _on_purchase_button_pressed() -> void:
 	else:
 		$HBoxContainer/VBoxContainer/Weapons/WeaponInfo/Panel/MarginContainer/Info/WeaponInfo/WarningLabel.text = "Can't add weapon. WeaponManager not found or missing add_weapon method."
 
-	# 5. 提示购买成功
 	%Warning.text = "Purchase success!"
 
-	
 func _update_weapon_buttons() -> void:
 	%Currency.text = "$ " + str(currency)
 	for weapon_id in character.weapons:
 		var w_info = character.weapons[weapon_id]
 		var button_path = "HBoxContainer/VBoxContainer/Weapons/WeaponName/%s" % weapon_id
 		var wbutton = get_node(button_path)
-		print(wbutton)
 		if wbutton:
-			print(w_info["owned"])
 			# 如果 owned = true，就隐藏按钮；否则显示
 			if w_info["owned"] == true:
 				wbutton.visible = false
 			else:
 				wbutton.visible = true
+
+func _buy_medkit_logic(info: Dictionary) -> void:
+	var owned_q = info["owned_quantity"]
+	var max_q = info["max_quantity"]
+	var item_id = info["name"]
+	# 检查是否达到上限
+	if owned_q >= max_q:
+		%Warning.text = "You cannot carry more " + item_id
+		return
+	
+	# 扣钱
+	currency -= info["price"]
+	
+	# owned_quantity +1
+	info["owned_quantity"] = owned_q + 1
+	
+	# 如果达到上限，就可以（可选）隐藏或禁用按钮
+	#if info["owned_quantity"] >= max_q:
+		#
+		#var button_path = "HBoxContainer/VBoxContainer/Weapons/WeaponName/%s" %item_id
+		#if has_node(button_path):
+			#get_node(button_path).visible = false
+	
+	# 也要把数量同步到玩家(若你有 Player 脚本管理背包)
+	# get_node("/root/Player").increase_medkit(1)
+	_update_weapon_buttons()
+	%Warning.text = "You bought 1 " + info["name"] + "! (Now you have " + str(info["owned_quantity"]) + ")"
 
 func load_perks():
 	if not character:
@@ -201,85 +260,16 @@ func check_perk_requirements(perk_id: String) -> bool:
 
 	var req_dict =  levelling_sys.perk_requirement[perk_id]
 
-	#if req_dict.has("attribute"):
-		#for attr_name in req_dict["attribute"]:
-			#var required_val = req_dict["attribute"][attr_name]
-			#var current_val = character.attributes[attr_name] if character.attributes.has(attr_name) else 0
-			#if current_val < required_val:
-				#return false
-	#if req_dict.has("skill"):
-		#for skill_name in req_dict["skill"]:
-			#var required_val = req_dict["skill"][skill_name]
-			#var current_val = character.skills[skill_name] if character.skills.has(skill_name) else 0
-			#if current_val < required_val:
-				#return false
+
 				
 	if req_dict.has("currency"):
 		var required_val =  req_dict["currency"]
-		if character.currency < required_val:
+		if currency < required_val:
 			return false
 
 	return true
 
-#func increase_attribute(stat: String):
-	#set(stat.to_lower() + "_add", get(stat.to_lower() + "_add") +1)
-	#%AttributeName.get_node(stat + "/Panel/Stats/Change").set_text("+" + str(
-												#get(stat.to_lower() + "_add")) + " ")
-	#%AttributeName.get_node(stat + "/Panel/Min").set_disabled(false)
-	#%AttributeName.get_node(stat + "/Panel/Min").set_visible(true)
-	#attribute_available_points -= 1
-	#%AttributeAvailablePoints.set_text("Points: " + str(attribute_available_points))
-	#if attribute_available_points == 0:
-		#for button in get_tree().get_nodes_in_group("AttributePlusButtons"):
-			#button.set_disabled(true)
-			#button.set_visible(false)
-	#print(stat + "Plus")
-	#
-#func decrease_attribute(stat: String):
-	#set(stat.to_lower() + "_add", get(stat.to_lower() + "_add") -1)
-	#if get(stat.to_lower() + "_add") == 0:
-		#%AttributeName.get_node(stat + "/Panel/Min").set_disabled(true)
-		#%AttributeName.get_node(stat + "/Panel/Min").set_visible(false)
-		#%AttributeName.get_node(stat + "/Panel/Stats/Change").set_text("")
-	#else :
-		#%AttributeName.get_node(stat + "/Panel/Stats/Change").set_text("+" + str(
-												#get(stat.to_lower() + "_add")) + " ")
-	#attribute_available_points += 1
-	#%AttributeAvailablePoints.set_text("Points: " + str(attribute_available_points))
-	#for button in get_tree().get_nodes_in_group("AttributePlusButtons"):
-		#button.set_disabled(false)
-		#button.set_visible(true)
-	#print((stat + "Minus"))
-	
-#func increase_skill(stat: String):
-	#set(stat.to_lower() + "_add", get(stat.to_lower() + "_add") +1)
-	#%SkillName.get_node(stat + "/Panel/Stats/Change").set_text("+" + str(
-												#get(stat.to_lower() + "_add")) + " ")
-	#%SkillName.get_node(stat + "/Panel/Min").set_disabled(false)
-	#%SkillName.get_node(stat + "/Panel/Min").set_visible(true)
-	#skill_available_points -= 1
-	#%SkillAvailablePoints.set_text("Points: " + str(skill_available_points))
-	#if skill_available_points == 0:
-		#for button in get_tree().get_nodes_in_group("SkillPlusButtons"):
-			#button.set_disabled(true)
-			#button.set_visible(false)
-	#print(stat + "Plus")
-	#
-#func decrease_skill(stat: String):
-	#set(stat.to_lower() + "_add", get(stat.to_lower() + "_add") -1)
-	#if get(stat.to_lower() + "_add") == 0:
-		#%SkillName.get_node(stat + "/Panel/Min").set_disabled(true)
-		#%SkillName.get_node(stat + "/Panel/Min").set_visible(false)
-		#%SkillName.get_node(stat + "/Panel/Stats/Change").set_text("")
-	#else :
-		#%SkillName.get_node(stat + "/Panel/Stats/Change").set_text("+" + str(
-												#get(stat.to_lower() + "_add")) + " ")
-	#skill_available_points += 1
-	#%SkillAvailablePoints.set_text("Points: " + str(skill_available_points))
-	#for button in get_tree().get_nodes_in_group("SkillPlusButtons"):
-		#button.set_disabled(false)
-		#button.set_visible(true)
-	#print((stat + "Minus"))
+
 	
 func spend_perk_points(perk_id: String):
 	if not character:
@@ -291,8 +281,8 @@ func spend_perk_points(perk_id: String):
 	if req_dict.has("currency"):
 		cost = req_dict["currency"]
 	character.perks[perk_id] = true
-	character.currency -= cost
-	%PerkPoints.set_text("$ " + str(character.currency))
+	currency -= cost
+	%PerkPoints.set_text("$ " + str(currency))
 	for button in get_tree().get_nodes_in_group("PerksButtons"):
 		if button.get_name().to_lower() == perk_id:
 			if button.has_node("TextureRect"):
@@ -362,13 +352,12 @@ func _process(delta):
 
 	
 func _exit_tree(): 
-	#character.sprint_multi *= 1+character.skills["endurance"]*0.01
-	#print(character.sprint_multi)
-	#levelling_sys.update_influence_from_skills()
+
 	if character and character.has_node("PlayerHUD"):
 		character.get_node("PlayerHUD").visible = true  
 		character.get_node("PlayerHUD").set_process_unhandled_input(true)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	character.currency = currency
 	
 
 

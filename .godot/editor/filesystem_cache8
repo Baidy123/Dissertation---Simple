@@ -1,15 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1739491813
+::res://::1739570305
 character_body_3d.gd::GDScript::-1::1737754399::0::1::::<>CharacterBody3D<>::
 gui.gd::GDScript::-1::1739489342::0::1::::<>CanvasLayer<>::
-gui.tscn::PackedScene::7595333634998135071::1739491813::0::1::::<><>::res://gui.gd
-menu.tscn::PackedScene::4446122779303581189::1739491813::0::1::::<><>::
+gui.tscn::PackedScene::7595333634998135071::1739561084::0::1::::<><>::res://gui.gd
+menu.tscn::PackedScene::4446122779303581189::1739561084::0::1::::<><>::
 rigid_body_3d.gd::GDScript::-1::1738063187::0::1::::<>RigidBody3D<>::
-StarterScene.tscn::PackedScene::6202077574063044567::1739491811::0::1::::<><>::uid://bk7nbd8td4gb1::::res://textures/grey_checkerboard_mat.tres<>uid://d1uelfks0ip1w::::res://textures/grid_image.png<>uid://bak8ltrhbmlv5::::res://utils/CSGStairMaker3D.tscn<>uid://dry23jeo6prdo::::res://models/terrain_mesh.mesh<>uid://c7yth5opetwes::::res://textures/kenney-dark-grey-checkerboard.png<>uid://b28c62e3f23vb::::res://textures/kenney-orange-checkerboard-cc0.png<>res://models/InteractableComponent.gd<>uid://7dm87wp0hyjg::::res://models/wiggly_hair.tscn<>uid://dv5h2pyptm0nv::::res://FpsControllor/player.tscn<>uid://dghibg1q8ctm2::::res://gui.tscn
-::res://FpsControllor/::1739491812
-player.gd::GDScript::-1::1739487675::0::1::::Player<>CharacterBody3D<>::
-player.tscn::PackedScene::8695633161117554851::1739491812::0::1::::<><>::res://FpsControllor/player.gd<>uid://1l46g0e5olx2::::res://FpsControllor/weapon_manager/weapon_manager.tscn<>res://FpsControllor/weapon_manager/weapon_resource.gd<>uid://frw4yydmklj::::res://FpsControllor/weapon_manager/player_hud/player_hud.tscn<>uid://i7tuf5jj3yv8::::res://FpsControllor/weapon_manager/knife/knife.tres<>uid://b48wddmekgwb1::::res://FpsControllor/levelling_system/level_up_system.tscn
-::res://FpsControllor/levelling_system/::1739491813
+StarterScene.tscn::PackedScene::6202077574063044567::1739561083::0::1::::<><>::uid://bk7nbd8td4gb1::::res://textures/grey_checkerboard_mat.tres<>uid://d1uelfks0ip1w::::res://textures/grid_image.png<>uid://bak8ltrhbmlv5::::res://utils/CSGStairMaker3D.tscn<>uid://dry23jeo6prdo::::res://models/terrain_mesh.mesh<>uid://c7yth5opetwes::::res://textures/kenney-dark-grey-checkerboard.png<>uid://b28c62e3f23vb::::res://textures/kenney-orange-checkerboard-cc0.png<>res://models/InteractableComponent.gd<>uid://7dm87wp0hyjg::::res://models/wiggly_hair.tscn<>uid://dv5h2pyptm0nv::::res://FpsControllor/player.tscn<>uid://dghibg1q8ctm2::::res://gui.tscn
+::res://FpsControllor/::1739561084
+player.gd::GDScript::-1::1739560944::0::1::::Player<>CharacterBody3D<>::
+player.tscn::PackedScene::8695633161117554851::1739561084::0::1::::<><>::res://FpsControllor/player.gd<>uid://1l46g0e5olx2::::res://FpsControllor/weapon_manager/weapon_manager.tscn<>res://FpsControllor/weapon_manager/weapon_resource.gd<>uid://frw4yydmklj::::res://FpsControllor/weapon_manager/player_hud/player_hud.tscn<>uid://i7tuf5jj3yv8::::res://FpsControllor/weapon_manager/knife/knife.tres<>uid://b48wddmekgwb1::::res://FpsControllor/levelling_system/level_up_system.tscn
+::res://FpsControllor/levelling_system/::1739561084
 BulletTime.webp::CompressedTexture2D::1695203849495244136::1738878863::1738880785::1::::<><>::
 BulletTime_disabled.webp::CompressedTexture2D::7083521794628219909::1738881083::1738881096::1::::<><>::
 Cowboy.webp::CompressedTexture2D::5040910983938916608::1738879437::1738880785::1::::<><>::
@@ -23,46 +23,46 @@ FlakJacket_disabled.webp::CompressedTexture2D::8509699470350571910::1738880912::
 GlowFrame_CustomBlue.webp::CompressedTexture2D::2778860098859212758::1738934571::1738934618::1::::<><>::
 initial_sheet.gd::GDScript::-1::1739463943::0::1::::<>Control<>::
 initial_sheet.tscn::PackedScene::3825113554598825748::1739491813::0::1::::<><>::res://FpsControllor/levelling_system/initial_sheet.gd<>uid://bfudojlcf6nn7::::res://FpsControllor/levelling_system/GlowFrame_CustomBlue.webp
-level_up_system.gd::GDScript::-1::1739482804::0::1::::LevellingSystem<>Node3D<>::
-level_up_system.tscn::PackedScene::4491362922605659492::1739491813::0::1::::<><>::res://FpsControllor/levelling_system/level_up_system.gd
+level_up_system.gd::GDScript::-1::1739543173::0::1::::LevellingSystem<>Node3D<>::
+level_up_system.tscn::PackedScene::4491362922605659492::1739561084::0::1::::<><>::res://FpsControllor/levelling_system/level_up_system.gd
 PackRat.webp::CompressedTexture2D::299574313551768285::1738880428::1738880785::1::::<><>::
 PackRat_disabled.webp::CompressedTexture2D::3950002406605315391::1738880942::1738881096::1::::<><>::
 Qinggong.webp::CompressedTexture2D::6598464028385625867::1738880148::1738880785::1::::<><>::
 Qinggong_disabled.webp::CompressedTexture2D::1391438899874889017::1738881010::1738881096::1::::<><>::
-store.gd::GDScript::-1::1739491400::0::1::::<>Control<>::
-Store.tscn::PackedScene::1114818053540054050::1739491813::0::1::::<><>::res://FpsControllor/levelling_system/store.gd<>uid://68f6s8oti5vq::::res://FpsControllor/levelling_system/ToughSkin.webp<>uid://dkplkynx8ux4y::::res://FpsControllor/levelling_system/ToughSkin_disabled.webp<>uid://bfudojlcf6nn7::::res://FpsControllor/levelling_system/GlowFrame_CustomBlue.webp<>uid://cd24cj63whkaa::::res://FpsControllor/levelling_system/Cowboy.webp<>uid://bqsr3q0i4jdwg::::res://FpsControllor/levelling_system/Cowboy_disabled.webp<>uid://dftuu0wb2tc86::::res://FpsControllor/levelling_system/DieHard.webp<>uid://8q6ttop4gopt::::res://FpsControllor/levelling_system/DieHard_disabled.webp<>uid://c1al0dx865brf::::res://FpsControllor/levelling_system/Qinggong.webp<>uid://t3a2bp8gjjh6::::res://FpsControllor/levelling_system/Qinggong_disabled.webp<>uid://yff03im7mmrw::::res://FpsControllor/levelling_system/BulletTime.webp<>uid://c76ktl2vmnh4h::::res://FpsControllor/levelling_system/BulletTime_disabled.webp<>uid://w4m1vo4rno6s::::res://FpsControllor/levelling_system/Vampire.webp<>uid://bbsj8vfn13bm7::::res://FpsControllor/levelling_system/Vampire_disabled.webp<>uid://dk6udr4fgyy5g::::res://FpsControllor/levelling_system/Deserter.webp<>uid://bp4l1sab5habg::::res://FpsControllor/levelling_system/Deserter_disabled.webp<>uid://cwhpr0ijf3eeg::::res://FpsControllor/levelling_system/FlakJacket.webp<>uid://dtifric5mlqdi::::res://FpsControllor/levelling_system/FlakJacket_disabled.webp<>uid://ejd7evgrfvj6::::res://FpsControllor/levelling_system/PackRat.webp<>uid://bwjn7yxpegwgl::::res://FpsControllor/levelling_system/PackRat_disabled.webp
+store.gd::GDScript::-1::1739545009::0::1::::<>Control<>::
+store.tscn::PackedScene::1114818053540054050::1739561084::0::1::::<><>::res://FpsControllor/levelling_system/store.gd<>uid://68f6s8oti5vq::::res://FpsControllor/levelling_system/ToughSkin.webp<>uid://dkplkynx8ux4y::::res://FpsControllor/levelling_system/ToughSkin_disabled.webp<>uid://bfudojlcf6nn7::::res://FpsControllor/levelling_system/GlowFrame_CustomBlue.webp<>uid://cd24cj63whkaa::::res://FpsControllor/levelling_system/Cowboy.webp<>uid://bqsr3q0i4jdwg::::res://FpsControllor/levelling_system/Cowboy_disabled.webp<>uid://dftuu0wb2tc86::::res://FpsControllor/levelling_system/DieHard.webp<>uid://8q6ttop4gopt::::res://FpsControllor/levelling_system/DieHard_disabled.webp<>uid://c1al0dx865brf::::res://FpsControllor/levelling_system/Qinggong.webp<>uid://t3a2bp8gjjh6::::res://FpsControllor/levelling_system/Qinggong_disabled.webp<>uid://yff03im7mmrw::::res://FpsControllor/levelling_system/BulletTime.webp<>uid://c76ktl2vmnh4h::::res://FpsControllor/levelling_system/BulletTime_disabled.webp<>uid://w4m1vo4rno6s::::res://FpsControllor/levelling_system/Vampire.webp<>uid://bbsj8vfn13bm7::::res://FpsControllor/levelling_system/Vampire_disabled.webp<>uid://dk6udr4fgyy5g::::res://FpsControllor/levelling_system/Deserter.webp<>uid://bp4l1sab5habg::::res://FpsControllor/levelling_system/Deserter_disabled.webp<>uid://cwhpr0ijf3eeg::::res://FpsControllor/levelling_system/FlakJacket.webp<>uid://dtifric5mlqdi::::res://FpsControllor/levelling_system/FlakJacket_disabled.webp<>uid://ejd7evgrfvj6::::res://FpsControllor/levelling_system/PackRat.webp<>uid://bwjn7yxpegwgl::::res://FpsControllor/levelling_system/PackRat_disabled.webp
 ToughSkin.webp::CompressedTexture2D::2244338560298545090::1738879338::1738880785::1::::<><>::
 ToughSkin_disabled.webp::CompressedTexture2D::7892803180362792094::1738881066::1738881096::1::::<><>::
 Vampire.webp::CompressedTexture2D::1604797675417658880::1738880387::1738880785::1::::<><>::
 Vampire_disabled.webp::CompressedTexture2D::2494374822378851612::1738880981::1738881096::1::::<><>::
-::res://FpsControllor/weapon_manager/::1739491812
+::res://FpsControllor/weapon_manager/::1739561084
 bulletdecal.png::CompressedTexture2D::8427805033951266145::1737058867::1737930018::1::::<><>::
 bullet_decal.tscn::PackedScene::8147396162305800125::1738352893::0::1::::<><>::uid://dscqynshj4354::::res://FpsControllor/weapon_manager/bulletdecal.png
 bullet_decal_pool.gd::GDScript::-1::1739461064::0::1::::BulletDecalPool<>RefCounted<>::
 bullet_tracer.tscn::PackedScene::4498995660455603090::1738326689::0::1::::<><>::
-explosion_effect.tscn::PackedScene::7542197289921016185::1739206309::0::1::::<><>::uid://dqojctpuplp8c::::res://FpsControllor/weapon_manager/kenney-black-smoke-texture-cc0.png<>uid://dlgxlpeiqgqfm::::res://FpsControllor/weapon_manager/sounds/cc0-737321__modusmogulus__pipe-bomb.wav<>uid://dyr03u1ottwak::::res://FpsControllor/weapon_manager/kenney-white-smoke-texture-cc0.png
+explosion_effect.tscn::PackedScene::7542197289921016185::1739561084::0::1::::<><>::uid://dqojctpuplp8c::::res://FpsControllor/weapon_manager/kenney-black-smoke-texture-cc0.png<>uid://dlgxlpeiqgqfm::::res://FpsControllor/weapon_manager/sounds/cc0-737321__modusmogulus__pipe-bomb.wav<>uid://dyr03u1ottwak::::res://FpsControllor/weapon_manager/kenney-white-smoke-texture-cc0.png
 kenney-black-smoke-texture-cc0.png::CompressedTexture2D::8311735884412289448::1738065417::1738096595::1::::<><>::
 kenney-white-smoke-texture-cc0.png::CompressedTexture2D::8880457738553771498::1738085612::1738328947::1::::<><>::
 knifedecal.png::CompressedTexture2D::2359543148807475175::1737058868::1738062362::1::::<><>::
-melee_weapon_resource.gd::GDScript::-1::1739491275::0::1::::MeleeWeaponResource<>WeaponResource<>::
+melee_weapon_resource.gd::GDScript::-1::1739559293::0::1::::MeleeWeaponResource<>WeaponResource<>::
 muzzle_flash.tscn::PackedScene::7386031847506954418::1738328981::0::1::::<><>::uid://dyr03u1ottwak::::res://FpsControllor/weapon_manager/kenney-white-smoke-texture-cc0.png
-projectile_weapon_resource.gd::GDScript::-1::1738099303::0::1::::ProjectileWeaponResource<>WeaponResource<>::
-shootgun_weapon_resource.gd::GDScript::-1::1738798799::0::1::::ShotgunWeaponResource<>WeaponResource<>::
+projectile_weapon_resource.gd::GDScript::-1::1739557979::0::1::::ProjectileWeaponResource<>WeaponResource<>::
+shootgun_weapon_resource.gd::GDScript::-1::1739544688::0::1::::ShotgunWeaponResource<>WeaponResource<>::
 weapon_clip_and_fov_shader.gdshader::Shader::-1::1737058868::0::1::::<><>::
 weapon_manager.gd::GDScript::-1::1739489287::0::1::::WeaponManager<>Node3D<>::
-weapon_manager.tscn::PackedScene::1849434596267385573::1739491812::0::1::::<><>::res://FpsControllor/weapon_manager/weapon_manager.gd<>uid://ddh34ookeoqpe::::res://FpsControllor/weapon_manager/muzzle_flash.tscn
-weapon_resource.gd::GDScript::-1::1739483172::0::1::::WeaponResource<>Resource<>::
+weapon_manager.tscn::PackedScene::1849434596267385573::1739561084::0::1::::<><>::res://FpsControllor/weapon_manager/weapon_manager.gd<>uid://ddh34ookeoqpe::::res://FpsControllor/weapon_manager/muzzle_flash.tscn
+weapon_resource.gd::GDScript::-1::1739559709::0::1::::WeaponResource<>Resource<>::
 ::res://FpsControllor/weapon_manager/deagle/::1739480866
 deagle - viewmodel.glb::PackedScene::2772909172093078798::1737746203::1737746476::1::::<><>::
 deagle-icon.PNG::CompressedTexture2D::7417905531708394162::1738085613::1738336780::1::::<><>::
 deagle.glb::PackedScene::8053405132729515007::1737976844::1737976844::1::::<><>::
 deagle.tres::Resource/WeaponResource::7044598016348535779::1739209006::0::1::::<><>::uid://ddxj25ks1eaqs::::res://FpsControllor/weapon_manager/deagle/deagle-icon.PNG<>res://FpsControllor/weapon_manager/weapon_resource.gd<>uid://d3vi2o7bmt2yc::::res://FpsControllor/weapon_manager/sounds/cc0-276959__gfl7__pistol-reload-sound.mp3<>uid://dm0en2ih7ulrr::::res://FpsControllor/weapon_manager/deagle/deagle.glb<>uid://6hf60jmtvo8b::::res://FpsControllor/weapon_manager/sounds/cc0-385811__morganpurkis__single-pistol-gunshot-3.wav<>uid://counu6xs7ni2t::::res://FpsControllor/weapon_manager/sounds/cc0-377145__nioczkus__pistol-draw-unholster.wav<>uid://bfrhn5y4um5cs::::res://FpsControllor/weapon_manager/deagle/deagle - viewmodel.glb
-::res://FpsControllor/weapon_manager/grenade/::1739480866
+::res://FpsControllor/weapon_manager/grenade/::1739558766
 grenade-icon.PNG::CompressedTexture2D::6705262105619285866::1738085613::1738336780::1::::<><>::
 grenade.glb::PackedScene::1941613161530875647::1738085613::1738096619::1::::<><>::
-grenade.tres::Resource/ProjectileWeaponResource::1108650855001593366::1738338470::0::1::::<><>::res://FpsControllor/weapon_manager/projectile_weapon_resource.gd<>uid://c2scxmo3gc587::::res://FpsControllor/weapon_manager/grenade/grenade-icon.PNG<>uid://6ixs2c0laluk::::res://FpsControllor/weapon_manager/grenade/grenade_projectile.tscn<>uid://2wsc5mwoqfch::::res://FpsControllor/weapon_manager/grenade/grenade.glb
+grenade.tres::Resource/ProjectileWeaponResource::1108650855001593366::1739558766::0::1::::<><>::res://FpsControllor/weapon_manager/projectile_weapon_resource.gd<>uid://c2scxmo3gc587::::res://FpsControllor/weapon_manager/grenade/grenade-icon.PNG<>uid://6ixs2c0laluk::::res://FpsControllor/weapon_manager/grenade/grenade_projectile.tscn<>uid://2wsc5mwoqfch::::res://FpsControllor/weapon_manager/grenade/grenade.glb
 grenade_projectile.tscn::PackedScene::2193799232306060334::1738326689::0::1::::<><>::
-::res://FpsControllor/weapon_manager/knife/::1739480866
+::res://FpsControllor/weapon_manager/knife/::1739560237
 blood_splatter.tscn::PackedScene::-1::1737058868::0::1::::<><>::
 knife viewmodel.glb::PackedScene::4669906495330318362::1737058868::1738062535::1::::<><>::uid://duem0wk7prlya::::res://FpsControllor/weapon_manager/knife/knife viewmodel_texture baking.png<>uid://cg64ry2r34hga::::res://FpsControllor/weapon_manager/knife/knife viewmodel_metallic-roughness.png<>uid://dpwvkk51o15lm::::res://FpsControllor/weapon_manager/knife/knife viewmodel_normal.png
 knife viewmodel_metallic-roughness.png::CompressedTexture2D::5259762593957950576::1737058868::1738062534::1::::<><>::
@@ -70,7 +70,7 @@ knife viewmodel_normal.png::CompressedTexture2D::8258804503804969322::1737058868
 knife viewmodel_texture baking.png::CompressedTexture2D::8572070856053417556::1737058868::1738062534::1::::<><>::
 knife-icon.PNG::CompressedTexture2D::2051987141922359288::1737058868::1738062534::1::::<><>::
 knife.glb::PackedScene::5686210474298077017::1737058868::1738062535::1::::<><>::uid://bl7ld1jmltc35::::res://FpsControllor/weapon_manager/knife/knife_texture baking.png<>uid://bx3082h0qkmq2::::res://FpsControllor/weapon_manager/knife/knife_metallic-roughness.png<>uid://cyfulati7maso::::res://FpsControllor/weapon_manager/knife/knife_normal.png
-knife.tres::Resource/MeleeWeaponResource::628760485357790683::1738338470::0::1::::<><>::uid://4h86ti7jpp6w::::res://FpsControllor/weapon_manager/knife/knife-icon.PNG<>uid://mo7wjc6cs6j4::::res://FpsControllor/weapon_manager/sounds/cc0-swoosh.wav<>res://FpsControllor/weapon_manager/melee_weapon_resource.gd<>uid://caqx08x73s06y::::res://FpsControllor/weapon_manager/sounds/cc0-118792__lmbubec__1_knife_slash_a.wav<>uid://counu6xs7ni2t::::res://FpsControllor/weapon_manager/sounds/cc0-377145__nioczkus__pistol-draw-unholster.wav<>uid://b7sexbof307ow::::res://FpsControllor/weapon_manager/knife/knife viewmodel.glb<>uid://cnapb5pbkrmt2::::res://FpsControllor/weapon_manager/knife/knife.glb
+knife.tres::Resource/MeleeWeaponResource::628760485357790683::1739560237::0::1::::<><>::uid://4h86ti7jpp6w::::res://FpsControllor/weapon_manager/knife/knife-icon.PNG<>uid://mo7wjc6cs6j4::::res://FpsControllor/weapon_manager/sounds/cc0-swoosh.wav<>res://FpsControllor/weapon_manager/melee_weapon_resource.gd<>uid://caqx08x73s06y::::res://FpsControllor/weapon_manager/sounds/cc0-118792__lmbubec__1_knife_slash_a.wav<>uid://counu6xs7ni2t::::res://FpsControllor/weapon_manager/sounds/cc0-377145__nioczkus__pistol-draw-unholster.wav<>uid://b7sexbof307ow::::res://FpsControllor/weapon_manager/knife/knife viewmodel.glb<>uid://cnapb5pbkrmt2::::res://FpsControllor/weapon_manager/knife/knife.glb
 knife_metallic-roughness.png::CompressedTexture2D::4060144950601302043::1737058868::1738062534::1::::<><>::
 knife_normal.png::CompressedTexture2D::6468929516815563666::1737058868::1738062534::1::::<><>::
 knife_texture baking.png::CompressedTexture2D::3225232676214534246::1737058868::1738062534::1::::<><>::
@@ -79,11 +79,11 @@ p90-icon.PNG::CompressedTexture2D::6753686998581915835::1738085613::1738336780::
 p90.glb::PackedScene::2214916571944232892::1737058868::1737980432::1::::<><>::
 p90.tres::Resource/WeaponResource::7182340489056184224::1739141562::0::1::::<><>::res://FpsControllor/weapon_manager/weapon_resource.gd<>uid://3u3udnw2f3oi::::res://FpsControllor/weapon_manager/sounds/cc0-276963__gfl7__galil-reload-sound.mp3<>uid://c3hsidj45i132::::res://FpsControllor/weapon_manager/p90/p90-icon.PNG<>uid://d2lu16lp40dm0::::res://FpsControllor/weapon_manager/sounds/cc0-371041__morganpurkis__single-gunshot-3.wav<>uid://counu6xs7ni2t::::res://FpsControllor/weapon_manager/sounds/cc0-377145__nioczkus__pistol-draw-unholster.wav<>uid://baxmgdfjn3vi1::::res://FpsControllor/weapon_manager/p90/p90.tscn<>uid://6s6l8kibarom::::res://FpsControllor/weapon_manager/p90/p90.glb
 p90.tscn::PackedScene::2434640856434591630::1739122534::0::1::::<><>::uid://6s6l8kibarom::::res://FpsControllor/weapon_manager/p90/p90.glb
-::res://FpsControllor/weapon_manager/player_hud/::1739491813
-crosshair.gdshader::Shader::-1::1739491813::0::1::::<><>::
+::res://FpsControllor/weapon_manager/player_hud/::1739561597
+crosshair.gdshader::Shader::-1::1739561597::0::1::::<><>::
 fps.gd::GDScript::-1::1738329540::0::1::::<>Label<>::
-player_hud.gd::GDScript::-1::1739491812::0::1::::<>Control<>::
-player_hud.tscn::PackedScene::11394926460639415::1739491813::0::1::::<><>::res://FpsControllor/weapon_manager/player_hud/player_hud.gd<>uid://bnrv4au7iny0k::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-dot.svg<>uid://3l2tosguwkdh::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-left-outline.svg<>uid://hwosgspthgii::::res://FpsControllor/weapon_manager/player_hud/weapon_select_layout.tscn<>uid://t7yh5i2vb11c::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-left-side.svg<>res://FpsControllor/weapon_manager/player_hud/crosshair.gdshader<>uid://cfdj3ndm4utpb::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-right-outline.svg<>uid://daol7c0iwa5eh::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-right-side.svg<>res://FpsControllor/weapon_manager/player_hud/speed.gd<>res://FpsControllor/weapon_manager/player_hud/fps.gd
+player_hud.gd::GDScript::-1::1739559011::0::1::::<>Control<>::
+player_hud.tscn::PackedScene::11394926460639415::1739561084::0::1::::<><>::res://FpsControllor/weapon_manager/player_hud/player_hud.gd<>uid://bnrv4au7iny0k::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-dot.svg<>uid://3l2tosguwkdh::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-left-outline.svg<>uid://hwosgspthgii::::res://FpsControllor/weapon_manager/player_hud/weapon_select_layout.tscn<>uid://t7yh5i2vb11c::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-left-side.svg<>res://FpsControllor/weapon_manager/player_hud/crosshair.gdshader<>uid://cfdj3ndm4utpb::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-right-outline.svg<>uid://daol7c0iwa5eh::::res://FpsControllor/weapon_manager/player_hud/crosshair/crosshair-right-side.svg<>res://FpsControllor/weapon_manager/player_hud/speed.gd<>res://FpsControllor/weapon_manager/player_hud/fps.gd
 speed.gd::GDScript::-1::1738329540::0::1::::<>Label<>::
 weapon_select_layout.gd::GDScript::-1::1738338271::0::1::::<>MarginContainer<>::
 weapon_select_layout.tscn::PackedScene::537620741898344824::1738352893::0::1::::<><>::uid://ddxj25ks1eaqs::::res://FpsControllor/weapon_manager/deagle/deagle-icon.PNG<>res://FpsControllor/weapon_manager/player_hud/weapon_select_layout.gd
@@ -93,13 +93,13 @@ crosshair-left-outline.svg::CompressedTexture2D::1989669829482048965::1738085614
 crosshair-left-side.svg::CompressedTexture2D::1401119414950086934::1738085614::1738326206::1::::<><>::
 crosshair-right-outline.svg::CompressedTexture2D::5130575862025531131::1738085614::1738326206::1::::<><>::
 crosshair-right-side.svg::CompressedTexture2D::7188888516021256103::1738085614::1738326206::1::::<><>::
-::res://FpsControllor/weapon_manager/rpg/::1739491813
+::res://FpsControllor/weapon_manager/rpg/::1739561084
 missile.glb::PackedScene::7931907047689951954::1738065419::1738083198::1::::<><>::
 rocket-launcher-icon.PNG::CompressedTexture2D::209097507824844462::1738085614::1738336780::1::::<><>::
 rocket-launcher.glb::PackedScene::7084176100833868595::1738065419::1738083147::1::::<><>::
-rocket.tscn::PackedScene::3854729492197747458::1739491813::0::1::::<><>::uid://dlajl53vloqgg::::res://FpsControllor/weapon_manager/rpg/missile.glb
+rocket.tscn::PackedScene::3854729492197747458::1739561084::0::1::::<><>::uid://dlajl53vloqgg::::res://FpsControllor/weapon_manager/rpg/missile.glb
 rocket_launcher.tscn::PackedScene::1024191564757726297::1738326689::0::1::::<><>::uid://c76vl0in5ubxb::::res://FpsControllor/weapon_manager/rpg/rocket-launcher.glb
-rpg.tres::Resource/ProjectileWeaponResource::1243383380481880338::1738344234::0::1::::<><>::uid://c8j2nbu284jq::::res://FpsControllor/weapon_manager/rpg/rocket-launcher-icon.PNG<>res://FpsControllor/weapon_manager/projectile_weapon_resource.gd<>uid://bu6i3jjm3qmrq::::res://FpsControllor/weapon_manager/rpg/rocket.tscn<>uid://ouejx70p4ccv::::res://FpsControllor/weapon_manager/rpg/rocket_launcher.tscn<>uid://c76vl0in5ubxb::::res://FpsControllor/weapon_manager/rpg/rocket-launcher.glb
+rpg.tres::Resource/ProjectileWeaponResource::1243383380481880338::1739558766::0::1::::<><>::uid://c8j2nbu284jq::::res://FpsControllor/weapon_manager/rpg/rocket-launcher-icon.PNG<>res://FpsControllor/weapon_manager/projectile_weapon_resource.gd<>uid://bu6i3jjm3qmrq::::res://FpsControllor/weapon_manager/rpg/rocket.tscn<>uid://ouejx70p4ccv::::res://FpsControllor/weapon_manager/rpg/rocket_launcher.tscn<>uid://c76vl0in5ubxb::::res://FpsControllor/weapon_manager/rpg/rocket-launcher.glb
 ::res://FpsControllor/weapon_manager/shotgun/::1739480866
 shotgun_test.tres::Resource/ShotgunWeaponResource::878979992820074975::1738352067::0::1::::<><>::res://FpsControllor/weapon_manager/shootgun_weapon_resource.gd<>uid://ouejx70p4ccv::::res://FpsControllor/weapon_manager/rpg/rocket_launcher.tscn<>uid://c76vl0in5ubxb::::res://FpsControllor/weapon_manager/rpg/rocket-launcher.glb
 ::res://FpsControllor/weapon_manager/sounds/::1739480866
@@ -128,8 +128,8 @@ InteractableComponent.gd::GDScript::-1::1737672686::0::1::::InteractableComponen
 ladder.tscn::PackedScene::159612079914848083::1738352893::0::1::::<><>::
 terrain_mesh.mesh::ArrayMesh::8403707299624820576::1736975776::0::1::::<><>::uid://lp2pt8mtj7ty::::res://textures/kenney-green-checkerboar-cc0.png
 wiggly_hair.tscn::PackedScene::2253025380239419456::1736976403::0::1::::<><>::
-::res://textures/::1739481644
-grey_checkerboard_mat.tres::StandardMaterial3D::3155160524320231692::1739481644::0::1::::<><>::uid://f3wj126c5das::::res://textures/kenney-grey-checkerboard-cc0.png
+::res://textures/::1739540203
+grey_checkerboard_mat.tres::StandardMaterial3D::3155160524320231692::1739540203::0::1::::<><>::uid://f3wj126c5das::::res://textures/kenney-grey-checkerboard-cc0.png
 grid_image.png::CompressedTexture2D::9025722331369733974::1736975776::1736975895::1::::<><>::
 kenney-dark-grey-checkerboard.png::CompressedTexture2D::7069597151335985322::1736975776::1736975895::1::::<><>::
 kenney-green-checkerboar-cc0.png::CompressedTexture2D::804710141535726166::1736975776::1736975895::1::::<><>::

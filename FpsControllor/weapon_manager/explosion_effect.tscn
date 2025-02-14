@@ -23,9 +23,11 @@ func _ready() -> void:
 	await get_tree().physics_frame
 	push_away_objects()
 	
-	var timer := get_tree().create_timer(5.0)
-	timer.timeout.connect(func(): self.queue_free())
-
+	if get_tree() != null:
+		var timer = get_tree().create_timer(5.0)
+		timer.timeout.connect(func():
+			queue_free()
+		)
 func push_away_objects():
 	for body in $Area3D.get_overlapping_bodies():
 		var body_pos = body.global_position

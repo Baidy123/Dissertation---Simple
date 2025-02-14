@@ -4,6 +4,13 @@ extends WeaponResource
 @export var bullet_amt : int = 7
 #@export var bullet_spread : float = 100
 
+func weapon_upgrade():
+	if weapon_lvl < max_weapon_lvl:
+		weapon_lvl += 1
+		damage_multi += 1
+		recoil_multi -= 0.2
+		bullet_spread -= 0.1
+		
 func fire_shot():
 	weapon_manager.play_anim(view_shoot_anim)
 	weapon_manager.play_sound(shoot_sound)
@@ -28,12 +35,12 @@ func fire_shot():
 			if obj is RigidBody3D:
 				obj.apply_impulse(-nrml * impact_force / obj.mass, pt -obj.global_position)
 			if obj.has_method("take_damage"):
-				obj.take_damage(self.damage)
+				obj.take_damage(self.damage * damage_multi, " ")
 			
 		weapon_manager.show_muzzle_flash()
 		if num_shots_fired % 3 == 0:
 			weapon_manager.make_bullet_trail(bullet_target_pos)
-	weapon_manager.apply_recoil(v_recoil, h_recoil)
+	weapon_manager.apply_recoil(v_recoil * recoil_multi, h_recoil * recoil_multi)
 
 	last_fire_time = Time.get_ticks_msec()
 	current_ammo -= 1

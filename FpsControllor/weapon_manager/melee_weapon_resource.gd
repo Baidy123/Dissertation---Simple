@@ -29,17 +29,17 @@ func fire_shot():
 			obj.apply_impulse(-nrml * 5.0 / obj.mass, pt - obj.global_position)
 		
 		if obj.has_method("take_backstab_damage") and raycast_dir.dot(-obj.global_basis.z) > 0.4 and (obj.global_transform.affine_inverse() * raycast.global_position).z > 0.0:
-			obj.take_backstab_damage(self.damage)
+			obj.take_backstab_damage(self.damage * damage_multi)
 			var blood_splatter = preload("res://FpsControllor/weapon_manager/knife/blood_splatter.tscn").instantiate()
 			obj.add_sibling(blood_splatter)
 			blood_splatter.global_position = pt
 		elif obj.has_method("take_damage"):
 
-			obj.take_damage(self.damage, " ")
+			obj.take_damage(self.damage * damage_multi, " ")
 			
 		if weapon_manager.get_parent().perks["3a"] == true:
 			if weapon_manager.get_parent().health < weapon_manager.get_parent().max_health:
-				weapon_manager.get_parent().health += int(self.damage * 0.1)
+				weapon_manager.get_parent().health += int(self.damage * damage_multi * 0.1)
 	else:
 		weapon_manager.play_sound(miss_sound)
 	

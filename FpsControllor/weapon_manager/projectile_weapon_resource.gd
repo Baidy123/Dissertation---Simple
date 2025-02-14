@@ -6,6 +6,9 @@ extends WeaponResource
 @export var projectile_relative_spawn_pos := Vector3(0,0,-3)
 @export var projectile_relative_spawn_rotation := Vector3(0,0,0)
 
+func weapon_upgrade():
+	pass
+	
 func fire_shot():
 	#weapon_manager.trigger_weapon_shoot_world_anim()
 	weapon_manager.play_anim(view_shoot_anim)

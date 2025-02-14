@@ -15,6 +15,7 @@ var headbob_time = 0.0
 @export var health := 100.0
 @export var max_health := 100.0
 @export var currency := 1000
+#@export var medicine := 10
 #@export var aptitude : String = " "
 #@export var attribute_available_points :int = 6
 #
@@ -70,6 +71,7 @@ var headbob_time = 0.0
 				"name" : "deagle",
 				"owned" : false,
 				"price" : 1,
+				"type": "weapon",
 				"description" : "This is the Description for deagle",
 				"file_path": "res://FpsControllor/weapon_manager/deagle/deagle.tres"
 				},
@@ -77,6 +79,7 @@ var headbob_time = 0.0
 				"name" : "p90",
 				"owned" : false,
 				"price" : 1,
+				"type": "weapon",
 				"description" : "This is the Description for p90",
 				"file_path": "res://FpsControllor/weapon_manager/p90/p90.tres"
 				},
@@ -84,6 +87,7 @@ var headbob_time = 0.0
 				"name" : "knife",
 				"owned" : true,
 				"price" : 1,
+				"type": "weapon",
 				"description" : "This is the Description for knife",
 				"file_path": "res://FpsControllor/weapon_manager/knife/knife.tres"
 				},
@@ -91,6 +95,7 @@ var headbob_time = 0.0
 				"name" : "rpg",
 				"owned" : false,
 				"price" : 1,
+				"type": "weapon",
 				"description" : "This is the Description for rpg",
 				"file_path": "res://FpsControllor/weapon_manager/rpg/rpg.tres"
 				},
@@ -98,9 +103,18 @@ var headbob_time = 0.0
 				"name" : "grenade",
 				"owned" : false,
 				"price" : 1,
+				"type": "weapon",
 				"description" : "This is the Description for nade",
 				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
 				},
+	"medkit": 	{
+				"name": "Medkit",
+				"price": 50,
+				"description": "Heals 50 HP",
+				"type": "medkit",          # 标记这是医疗箱
+				"max_quantity": 3,
+				"owned_quantity": 0
+				}
 }
 #@export var experience = {
 	#"curr_lvl_exp" : 0,
@@ -174,8 +188,59 @@ func take_damage(damage: float, dmg_type: String):
 		else:
 			health = 0
 			get_tree().change_scene_to_file("res://StarterScene.tscn")
+			
+func use_medic():
+	var medicine = weapons["medkit"]["owned_quantity"]
+	if medicine <= 0 or health >= max_health:
+		return
+	health += 35
+	if health >= max_health:
+		health = max_health
+	weapons["medkit"]["owned_quantity"] -= 1
+
+func upgrade_weapon():
+	var current_weapon = $WeaponManager.current_weapon
+	if current_weapon.has_lvl:
+		if current_weapon.max_weapon_lvl > current_weapon.weapon_lvl:
+			if currency >= current_weapon.upgrade_money:
+				currency -= current_weapon.upgrade_money
+				current_weapon.weapon_upgrade()
+			else:
+				$PlayerHUD.get_node("InteractiveText").set_visible(true)
+				$PlayerHUD.get_node("InteractiveText").text = "You need more money!"
+				await get_tree().create_timer(3).timeout
+				$PlayerHUD.get_node("InteractiveText").set_visible(false)
+				return
+		else:
+			$PlayerHUD.get_node("InteractiveText").set_visible(true)
+			$PlayerHUD.get_node("InteractiveText").text = "The level of this weapon is max!"
+			await get_tree().create_timer(3).timeout
+			$PlayerHUD.get_node("InteractiveText").set_visible(false)
+			return
+	else:
+		$PlayerHUD.get_node("InteractiveText").set_visible(true)
+		$PlayerHUD.get_node("InteractiveText").text = "Cannot upgrade this weapon!"
+		await get_tree().create_timer(3).timeout
+		$PlayerHUD.get_node("InteractiveText").set_visible(false)
+		return
 	
-	
+func fullfill_ammo():
+	var current_weapon = $WeaponManager.current_weapon
+	if (current_weapon.current_ammo and
+		 current_weapon.reserve_ammo == INF) or (current_weapon.current_ammo == current_weapon.magazine_capacity and 
+			current_weapon.reserve_ammo == current_weapon.max_reserve_ammo):
+		return
+
+	if currency < current_weapon.fullfill_money:
+		$PlayerHUD.get_node("InteractiveText").set_visible(true)
+		$PlayerHUD.get_node("InteractiveText").text = "You need more money!"
+		await get_tree().create_timer(3).timeout
+		$PlayerHUD.get_node("InteractiveText").set_visible(false)
+		return
+	else:
+		current_weapon.fullfill_ammo()
+		currency -= current_weapon.fullfill_money
+		
 var is_sprinting :bool = false 
 var sprint_limit: float = 5.0 
 var sprint_remaining_time := sprint_limit
@@ -216,8 +281,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			rotate_y(-event.relative.x * sensitivity)
 			%Camera3D.rotate_x(-event.relative.y * sensitivity)
 			%Camera3D.rotation.x = clamp(%Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad((90)))
-	if event.is_action_pressed("bullettime") and perks["1b"]:
+	if event.is_action_pressed("bullettime")and perks["1b"]:
 		$LevellingSystem.bullet_time()
+		#fullfill_ammo()
+	if Input.is_action_just_pressed("healing"):
+		use_medic()
 
 func get_interactable_component_at_shapecast() -> InteractableComponent:
 	for i in %InteractShapeCast3D.get_collision_count():

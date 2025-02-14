@@ -118,6 +118,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Update weapon switch menu visibility
 	$CurrencyReminder.text = "   $ " + str(player.currency)
+	$MedicReminder.text = "[H]x" + str(player.weapons["medkit"]["owned_quantity"])
 	%WeaponSwitchMenu.modulate = Color(1, 1, 1, get_weapon_menu_visibility())
 	weapon_manager.allow_shoot = get_weapon_menu_visibility() != 1.0
 	
@@ -141,3 +142,9 @@ func _process(delta: float) -> void:
 		else: %ReserveAmmoLabel.text = str(weapon_manager.current_weapon.reserve_ammo)
 		
 		%ReserveAmmoLabel.visible = weapon_manager.current_weapon.max_reserve_ammo > 0
+	
+	if not weapon_manager.current_weapon.has_lvl:
+		$WeaponLevel.visible = false
+	else :
+		$WeaponLevel.text = "Weapon Lv." + str(weapon_manager.current_weapon.weapon_lvl)
+		$WeaponLevel.visible = true

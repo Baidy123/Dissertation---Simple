@@ -41,6 +41,7 @@ extends Resource
 @export var v_recoil : float
 @export var h_recoil : float
 @export var damage = 10
+@export var has_lvl := true
 @export var max_weapon_lvl := 3
 @export var weapon_lvl :int = 0
 
@@ -145,20 +146,23 @@ func check_perk_pr():
 var damage_multi = 1
 var recoil_multi = 1
 
-func weapon_update():
-	if weapon_lvl < max_weapon_lvl:
-		weapon_lvl += 1
-		damage_multi += 1
-		recoil_multi -= 0.2
-		bullet_spread -= 0.2
-		
-		
-#func get_player_handguns():
-	##print(weapon_manager.get_parent().skills_influence["handguns"])
-	#return weapon_manager.get_parent().skills_influence["handguns"]
+var upgrade_money = 5000
+func weapon_upgrade():
+	weapon_lvl += 1
+	damage_multi += 1
+	recoil_multi -= 0.2
+	bullet_spread -= 0.2
+	upgrade_money += upgrade_money
+	fullfill_money += fullfill_money * weapon_lvl
+	fullfill_ammo()
 
-#func get_player_longguns():
-	#return weapon_manager.get_parent().skills_influence["longguns"]
+var fullfill_money = 500
+func fullfill_ammo():
+	current_ammo = magazine_capacity
+	reserve_ammo = max_reserve_ammo
+	
+		
+		
 
 var num_shots_fired : int = 0
 func fire_shot():
