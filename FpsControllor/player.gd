@@ -206,22 +206,22 @@ func upgrade_weapon():
 				currency -= current_weapon.upgrade_money
 				current_weapon.weapon_upgrade()
 			else:
-				$PlayerHUD.get_node("InteractiveText").set_visible(true)
-				$PlayerHUD.get_node("InteractiveText").text = "You need more money!"
+				$PlayerHUD.get_node("InteractiveWarning").set_visible(true)
+				$PlayerHUD.get_node("InteractiveWarning").text = "You need more money!"
 				await get_tree().create_timer(3).timeout
-				$PlayerHUD.get_node("InteractiveText").set_visible(false)
+				$PlayerHUD.get_node("InteractiveWarning").set_visible(false)
 				return
 		else:
-			$PlayerHUD.get_node("InteractiveText").set_visible(true)
-			$PlayerHUD.get_node("InteractiveText").text = "The level of this weapon is max!"
+			$PlayerHUD.get_node("InteractiveWarning").set_visible(true)
+			$PlayerHUD.get_node("InteractiveWarning").text = "The level of this weapon is max!"
 			await get_tree().create_timer(3).timeout
-			$PlayerHUD.get_node("InteractiveText").set_visible(false)
+			$PlayerHUD.get_node("InteractiveWarning").set_visible(false)
 			return
 	else:
-		$PlayerHUD.get_node("InteractiveText").set_visible(true)
-		$PlayerHUD.get_node("InteractiveText").text = "Cannot upgrade this weapon!"
+		$PlayerHUD.get_node("InteractiveWarning").set_visible(true)
+		$PlayerHUD.get_node("InteractiveWarning").text = "Cannot upgrade this weapon!"
 		await get_tree().create_timer(3).timeout
-		$PlayerHUD.get_node("InteractiveText").set_visible(false)
+		$PlayerHUD.get_node("InteractiveWarning").set_visible(false)
 		return
 	
 func fullfill_ammo():
@@ -232,10 +232,10 @@ func fullfill_ammo():
 		return
 
 	if currency < current_weapon.fullfill_money:
-		$PlayerHUD.get_node("InteractiveText").set_visible(true)
-		$PlayerHUD.get_node("InteractiveText").text = "You need more money!"
+		$PlayerHUD.get_node("InteractiveWarning").set_visible(true)
+		$PlayerHUD.get_node("InteractiveWarning").text = "You need more money!"
 		await get_tree().create_timer(3).timeout
-		$PlayerHUD.get_node("InteractiveText").set_visible(false)
+		$PlayerHUD.get_node("InteractiveWarning").set_visible(false)
 		return
 	else:
 		current_weapon.fullfill_ammo()

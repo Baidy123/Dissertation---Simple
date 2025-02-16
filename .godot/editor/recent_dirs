@@ -1,4 +1,6 @@
 res://
+res://models/Enemy
+res://models/enemy
 res://FpsControllor/levelling_system
 res://FpsControllor
 res://FpsControllor/weapon_manager/shotgun

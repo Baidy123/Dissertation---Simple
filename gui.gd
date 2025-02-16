@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-
+@onready var character = get_node("../Player")
+@onready var levelling_sys = get_node("../Player/LevellingSystem")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -25,3 +26,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		#elif has_node("InitialSheet"):
 			#get_node("InitialSheet").queue_free()
 			
+
+
+func _on_interactable_component_interacted() -> void:
+	#Store
+	#if not has_node("Store"):
+		#var store = load("res://FpsControllor/levelling_system/Store.tscn").instantiate()
+		#add_child(store)
+	#Ammo_box
+	#if character:
+		#character.fullfill_ammo()
+	#Upgrade_weapon
+	if character:
+		character.upgrade_weapon()
+	
