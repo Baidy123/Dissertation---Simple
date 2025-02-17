@@ -196,14 +196,18 @@ func fire_shot():
 	
 	if raycast.is_colliding():
 		var obj = raycast.get_collider()
+		#print(obj)
 		var nrml = raycast.get_collision_normal()
 		var pt = raycast.get_collision_point()
 		BulletDecalPool.spawn_bullet_decal(pt, nrml, obj, raycast.global_basis)
+
 		if obj is RigidBody3D:
 			obj.apply_impulse(-nrml * impact_force / obj.mass, pt -obj.global_position)
-		if obj.has_method("take_damage"):
-			obj.take_damage(self.damage * damage_multi, " ")
-			
+		if obj.is_in_group("enemy") and obj.has_method("take_damage"):
+			obj.take_damage(self.damage * damage_multi)
+			var blood_splatter = preload("res://FpsControllor/weapon_manager/knife/blood_splatter.tscn").instantiate()
+			obj.add_sibling(blood_splatter)
+			blood_splatter.global_position = pt
 	weapon_manager.show_muzzle_flash()
 	if num_shots_fired % 3 == 0:
 		weapon_manager.make_bullet_trail(bullet_target_pos)

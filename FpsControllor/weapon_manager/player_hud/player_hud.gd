@@ -112,6 +112,7 @@ func _unhandled_input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$PlayerHit.visible = false
 	_update_weapon_switch_menu()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -148,3 +149,9 @@ func _process(delta: float) -> void:
 	else :
 		$WeaponLevel.text = "Weapon Lv." + str(weapon_manager.current_weapon.weapon_lvl)
 		$WeaponLevel.visible = true
+
+
+func _on_player_player_hit() -> void:
+	$PlayerHit.visible = true
+	await get_tree().create_timer(0.2).timeout
+	$PlayerHit.visible = false

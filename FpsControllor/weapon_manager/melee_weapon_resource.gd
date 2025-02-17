@@ -28,14 +28,16 @@ func fire_shot():
 		if obj is RigidBody3D:
 			obj.apply_impulse(-nrml * 5.0 / obj.mass, pt - obj.global_position)
 		
-		if obj.has_method("take_backstab_damage") and raycast_dir.dot(-obj.global_basis.z) > 0.4 and (obj.global_transform.affine_inverse() * raycast.global_position).z > 0.0:
-			obj.take_backstab_damage(self.damage * damage_multi)
+		#if obj.has_method("take_backstab_damage") and raycast_dir.dot(-obj.global_basis.z) > 0.4 and (obj.global_transform.affine_inverse() * raycast.global_position).z > 0.0:
+			#obj.take_backstab_damage(self.damage * damage_multi)
+			#var blood_splatter = preload("res://FpsControllor/weapon_manager/knife/blood_splatter.tscn").instantiate()
+			#obj.add_sibling(blood_splatter)
+			#blood_splatter.global_position = pt
+		if obj.is_in_group("enemy") and obj.has_method("take_damage"):
 			var blood_splatter = preload("res://FpsControllor/weapon_manager/knife/blood_splatter.tscn").instantiate()
 			obj.add_sibling(blood_splatter)
 			blood_splatter.global_position = pt
-		elif obj.has_method("take_damage"):
-
-			obj.take_damage(self.damage * damage_multi, " ")
+			obj.take_damage(self.damage * damage_multi)
 			
 		if weapon_manager.get_parent().perks["3a"] == true:
 			if weapon_manager.get_parent().health < weapon_manager.get_parent().max_health:

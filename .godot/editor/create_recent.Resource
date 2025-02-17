@@ -1,4 +1,3 @@
-StartingStats
-ShotgunWeaponResource
 WeaponResource
+ShotgunWeaponResource
 ProjectileWeaponResource

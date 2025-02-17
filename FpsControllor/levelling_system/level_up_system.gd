@@ -116,7 +116,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		#gain_experience(10000)
 		#print(player.experience["total_exp"])
 		#print(player.experience["curr_lvl_exp"])
-		player.take_damage(20, " ")
+		#player.take_damage(20, " ",(0,0,0))
+		pass
 	
 		
 #PERKS

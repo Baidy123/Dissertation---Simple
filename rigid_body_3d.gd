@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var hp := 50
+@export var hp := 300
 
 # Called when the node enters the scene tree for the first time.
 

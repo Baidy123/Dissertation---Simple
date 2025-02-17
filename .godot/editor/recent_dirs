@@ -1,6 +1,7 @@
+res://FpsControllor/weapon_manager/glock
+res://models/enemy
 res://
 res://models/Enemy
-res://models/enemy
 res://FpsControllor/levelling_system
 res://FpsControllor
 res://FpsControllor/weapon_manager/shotgun

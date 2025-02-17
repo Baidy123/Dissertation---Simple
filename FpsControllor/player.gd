@@ -11,6 +11,7 @@ const HEADBOB_MOVE_AMOUNT = 0.06
 const HEADBOB_FREQUENCY = 2.4
 var headbob_time = 0.0
 
+signal player_hit()
 #Character stats
 @export var health := 100.0
 @export var max_health := 100.0
@@ -155,6 +156,7 @@ var is_crouched := false
 
 func _ready() -> void:
 	update_viwe_and_world_model_masks()
+	
 		
 
 func update_viwe_and_world_model_masks():
@@ -169,9 +171,10 @@ func update_viwe_and_world_model_masks():
 	%Camera3D.set_cull_mask_value(WORLD_MODEL_LAYER,false)
 	
 var dmg_reduce_rate : float = 0
-func take_damage(damage: float, dmg_type: String):
+func take_damage(damage: float, dmg_type: String = " "):
 	if $LevellingSystem.die_hard_active:
 		return
+	emit_signal("player_hit")
 	if perks["3b"] == true:
 		if dmg_type == "explosion":
 			return
