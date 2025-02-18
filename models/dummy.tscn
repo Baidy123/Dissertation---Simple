@@ -1,7 +1,9 @@
 [gd_scene load_steps=19 format=4 uid="uid://b3u0t70ujbs71"]
 
-[ext_resource type="AudioStream" uid="uid://d3811jtgsamp7" path="res://cc0-die.wav" id="1_wvlxc"]
 [ext_resource type="PackedScene" uid="uid://7dm87wp0hyjg" path="res://models/wiggly_hair.tscn" id="2_8y5p1"]
+
+[sub_resource type="Resource" id="Resource_l231l"]
+metadata/__load_path__ = "res://cc0-die.wav"
 
 [sub_resource type="GDScript" id="GDScript_t5kxy"]
 script/source = "extends RigidBody3D
@@ -196,7 +198,7 @@ font_names = PackedStringArray("Bungee")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.14304, 0.0219994, -61.7708)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("1_wvlxc")
+stream = SubResource("Resource_l231l")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 4.09782e-08, 0)

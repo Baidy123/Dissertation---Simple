@@ -1,9 +1,15 @@
+res://Map
+res://Map/Models/Vans
+res://Map/Models/Iteractable
+res://Map/Models/Trees
+res://Map/Models/Road
+res://Map/Models/Buildings
+res://FpsControllor
+res://
 res://FpsControllor/weapon_manager/glock
 res://models/enemy
-res://
 res://models/Enemy
 res://FpsControllor/levelling_system
-res://FpsControllor
 res://FpsControllor/weapon_manager/shotgun
 res://FpsControllor/weapon_manager
 res://FpsControllor/weapon_manager/player_hud
@@ -14,4 +20,3 @@ E:/Godot/StarterProject/FpsControllor/weapon_manager/p90
 E:/Godot/StarterProject/FpsControllor/weapon_manager/deagle
 res://FpsControllor/weapon_manager/p90
 res://FpsControllor/weapon_manager/deagle
-res://models

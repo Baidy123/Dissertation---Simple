@@ -4,7 +4,7 @@ extends CharacterBody3D
 var player = null
 var state_machine
 
-@export var speed = 4
+const SPEED = 4
 
 const ATTACK_RANGE = 2.0
 
@@ -20,7 +20,7 @@ var max_damage: int = 100
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
-@export var waves := 1
+@export var waves := 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,12 +30,9 @@ func _ready():
 	else:
 		dmg = int(min(max_damage, base_dmg + 
 					(round_modifier * ((waves - 1) / 5))))
-	print(health)
-	print(dmg)
-	if waves <= 3:
-		speed = 0.5
-	else:
-		speed = 4
+	#print(health)
+	#print(dmg)
+
 	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
 
@@ -50,23 +47,20 @@ func _process(delta):
 		"Walk":
 			nav_agent.set_target_position(player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
-			velocity = (next_nav_point - global_transform.origin).normalized() * speed
+			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10.0)
 		"Run":
 			# Navigation
 			nav_agent.set_target_position(player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
-			velocity = (next_nav_point - global_transform.origin).normalized() * speed
+			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10.0)
 		"Attack":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
 	# Conditions
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
-	if speed == 0.5:
-		anim_tree.set("parameters/conditions/walk", !_target_in_range())
-	if speed == 4:
-		anim_tree.set("parameters/conditions/run", !_target_in_range())
+	anim_tree.set("parameters/conditions/run", !_target_in_range())
 	
 	
 	move_and_slide()

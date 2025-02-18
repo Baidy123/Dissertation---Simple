@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=4 uid="uid://btah88wjfju42"]
+
+[ext_resource type="Texture2D" uid="uid://cxrafpqgl0diu" path="res://Map/Models/Vans/Textures/truck.png" id="1_56lis"]
+[ext_resource type="Texture2D" uid="uid://yye6drygs2nq" path="res://Map/Models/Vans/Textures/metal.png" id="2_dxiwa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1kj1"]
+resource_name = "truck"
+shading_mode = 0
+albedo_texture = ExtResource("1_56lis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8i1df"]
+resource_name = "metal"
+shading_mode = 0
+albedo_texture = ExtResource("2_dxiwa")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d8jqs"]
+_surfaces = [{
+"aabb": AABB(-0.415, 0, -0.8217, 0.83, 1.00596, 1.6434),
+"format": 34896613377,
+"index_count": 186,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIAAgAEAAUABQAAAAIABgAFAAQABAAHAAYACgAIAAkACQALAAoADgAMAA0ADQAPAA4AEAAOAA8ADwARABAAEAARAAgACAAKABAAEgALAAkACQATABIABgAHAA0ADQAMAAYAFQAUAAMAAwABABUAEgATABYAFgAXABIADAAOABAAEAAGAAwAEAAKAAYACgALAAYACwASAAYABgASABgAFwAYABIABgAYAAAAAAAFAAYAGAABAAAAGAAZAAEAGQAVAAEAHAAaABsAHAAbABQAFAAVABwAHQAcABUAFQAZAB0AGQAeAB0AAwAUABsAGwAfAAMAAgADAB8ABAACAB8ABAAfABMAHwAWABMABwAEABMABwATAAkABwAJAAgABwAIABEADQAHABEAEQAPAA0AFgAfACAAIAAhABYAIQAYABYAGAAXABYAIgAhACAAIAAjACIAHAAjACAAIAAaABwAHgAhACIAIgAdAB4A"),
+"name": "truck",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AAAAAKzfAAAAALgUrN8AAP//AACs3wAA//+4FKzfAAD//wAAvB0AAAAAAAC8HQAAAAC4FLwdAAD//7gUvB0AAP//gNIPFAAA//+A0sAZAAAAAIDSDxQAAAAAgNLAGQAAAAC4FAAAAAD//7gUAAAAAAAAGIgAAAAA//8YiAAAAAAAAGzGagsAAP//bMZqCwAAAAD//0knAAD/////SScAAP//uBT//wAAAAC4FP//AAD/////BUoAAAAA//8FSgAAAADpVwVKAAAAAOlX//8AAIvR6Vf//wAA///pV///AACL0S9L//8AAHMuL0v//wAAcy7pV///AAD//+lXBUoAAIvR6VcFSgAAcy7pVwVKAABzLi9LBUoAAIvRL0sFSgAA")
+}, {
+"aabb": AABB(-0.415, 0.295454, -0.34651, 0.83, 0.05, 1.16821),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYACgAIAAkACQALAAoA"),
+"name": "metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("i9EAAAAAAACL0QAA//8AAHMuAAAAAAAAcy4AAP//AAD/////AAAAAP///////wAAi9H//wAAAACL0f////8AAHMu//8AAAAAcy7/////AAAAAP//AAAAAAAA/////wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_13s30"]
+resource_name = "truck-flat_truck-flat"
+_surfaces = [{
+"aabb": AABB(-0.415, 0, -0.8217, 0.83, 1.00596, 1.6434),
+"attribute_data": PackedByteArray("3IIZ/NyCEviYhRn8mIUS+JN9yNUWf8jVk33L9xZ/y/fpekr8C3hK/Ol6E/gLeBP4eXfw1Xl3C9RXevDVV3oL1Fd6dP55d3T+V3r35nl39+ZXerjZeXe42Xl38NVXevDVhHkk19V3JNeEeRjR1XcY0RB40v4QeO707nrS/u567vR8hTv1fIV+/7+CO/W/gn7/yHeo1sh3DNBseajWbHkM0GVmsiTHZp4RZWYCSGNnAkgRZ+wNQWfsDbVnAADdaHEz3WgAANptWU5jZ1lO2m0CSO5ucTPubgJII4Uh8KKFIfAjhZryooUv/eWCL/1lg5ry5YIh8GWDIfDubgJI7m5xM9ptAkjdaHEz2m1ZTmNnWU61ZwAA3WgAAGNnAkhBZ+wNEWfsDcdmnhFlZgJIZWayJN0CHHFYAhxx3QLlToUAHHEAABxxAADlToUAs3NYArNz3WhWN91ocTPublY37m5xM91ocTPdaFY37m5xM+5uVjc="),
+"format": 34896613399,
+"index_count": 186,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYACgAIAAkACQALAAoADgAMAA0ADQAPAA4AEgAQABEAEQATABIAFAASABMAEwAVABQAFAAVABYAFgAXABQAGgAYABkAGQAbABoAHgAcAB0AHQAfAB4AIgAgACEAIQAjACIAJgAkACUAJQAnACYAKgAoACkAKQArACoAKQAsACsALAAtACsALQAuACsAKwAuAC8AMAAvAC4AKwAvADEAMQAyACsALwAzADEALwA0ADMANAA1ADMAOAA2ADcAOAA3ADkAOQA6ADgAOwA4ADoAOgA8ADsAPAA9ADsAQAA+AD8APwBBAEAAQgBAAEEAQwBCAEEAQwBBAEQAQQBFAEQARgBDAEQARgBEAEcARgBHAEgARgBIAEkASgBGAEkASQBLAEoATgBMAE0ATQBPAE4ATwBQAE4AUABRAE4AUgBPAE0ATQBTAFIAVgBUAFUAVQBXAFYAWgBYAFkAWQBbAFoA"),
+"material": SubResource("StandardMaterial3D_f1kj1"),
+"name": "truck",
+"primitive": 3,
+"uv_scale": Vector4(29.9996, 2, 0, 0),
+"vertex_count": 92,
+"vertex_data": PackedByteArray("AAAAAKzfAIAAALgUrN8AgP//AACs3wCA//+4FKzfAID//wAAvB3//wAAAAC8Hf////8AAKzf//8AAAAArN///wAAAAC8Hf////8AALwd//8AALgUvB3/////uBS8Hf////+A0g8U/////4DSwBn//wAAgNIPFP//AACA0sAZ//8AALgUAAD/////uBQAAP//AAAYiAAA/////xiIAAD//wAAbMZqC/////9sxmoL/////4DSDxT//wAAgNIPFP//AACA0sAZ/////4DSwBn//wAA//9JJ////////0kn/////7gUvB3/////uBQAAP//AAC4FLwd//8AALgUAAD/////uBT///+///+4FKzf/78AALgU////vwAAuBSs3/+//////0kn////////BUr//wAA//9JJ///AAD//wVK//8AABiIAAD/vwAAbMZqC/+/AAC4FAAA/78AALgUvB3/vwAAgNIPFP+/AACA0sAZ/78AAP//SSf/vwAA6VcFSv+/AAD//wVK/78AAAAArN//vwAAAAC8Hf+/AAC4FKzf/78AAOlX////vwAAuBT///+/i9HpV///AID//+lX//8AgIvRL0v//wCA//+4FP//AIAAALgU//8AgHMuL0v//wCAAADpV///AIBzLulX//8AgP//uBT//wAA///pV///AAD//7gUrN8AAP//6VcFSgAA//8AAKzfAAD//wAAvB0AAP////9JJwAA/////wVKAAD//7gUvB0AAP//gNLAGQAA//+A0g8UAAD//2zGagsAAP//uBQAAAAA//8YiAAAAAD//+lXBUoAgIvR6VcFSgCA/////wVKAIBzLulXBUoAgAAA6VcFSgCAAAD//wVKAIBzLi9LBUoAgIvRL0sFSgCAi9EvSwVK/7+L0elXBUr/v4vRL0v///+/i9HpV////79zLulXBUoAAHMuL0sFSgAAcy7pV///AABzLi9L//8AAP9/////f////3////9/////f/8//3//P/9//z//f/8//3////9/////f////3////9//7//f/+//3//v/9//7//f////3////9/T/f/f0/3/3+z4v9/s+L/f6HX/3+h1/9/DOj/fwzo/39f0v9/X9L/f/8//3//P/9//z//f/8/AAD/fwAA/38AAP9/AAD/f/9/X9L/f/+//39f0v9//7//f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//f////3////9/////f////3////9/////f////3////9/////f////3////9/////v/9//7//f/+//3//v/9/")
+}, {
+"aabb": AABB(-0.415, 0.295454, -0.34651, 0.83, 0.05, 1.16821),
+"attribute_data": PackedByteArray("cy7//3Mu8pCL0f//i9HykAAA//8AAPKQcy7//3Mu8pCL0f//i9HykP////////KQ"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYACgAIAAkACQALAAoA"),
+"material": SubResource("StandardMaterial3D_8i1df"),
+"name": "metal",
+"primitive": 3,
+"uv_scale": Vector4(0.83, 2.69302, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("i9EAAAAA//+L0QAA/////3MuAAAAAP//cy4AAP//////////AAD/////////////i9H//wAA//+L0f///////3Mu//8AAP//cy7///////8AAP//AAD//wAA/////////3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_d8jqs")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tqxyr"]
+points = PackedVector3Array(0.412667, 1.006, -0.546944, -0.414022, 0.00395242, -0.6308, -0.41241, 0.0814, -0.804424, -0.428043, 1.03039, -0.339094, 0.415, 0.0836173, 0.800249, 0.415, 0.0836173, -0.800249, -0.428043, 0.352198, 0.834743, 0.432786, 0.3523, 0.834743, -0.415, 0.00276669, 0.607086, -0.41255, 0.76004, -0.754284, 0.415, 0.00851562, -0.625097, 0.432786, 1.03039, -0.339094, 0.393172, 0.584297, -0.806885, 0.415, 0.00851562, 0.600187, -0.41241, 0.0814, 0.804424, -0.412913, 0.986819, -0.578822, 0.415, 0.758651, -0.750116, -0.413694, 0.584201, -0.806914, -0.407925, 1.006, -0.546944, 0.415, 0.983761, -0.575121, 0.415, 0.583675, -0.800249, 0.415, 0.683648, -0.775183)
+
+[node name="truck-flat2" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="truck-flat" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 7, 0, 0, 0)
+mesh = SubResource("ArrayMesh_13s30")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 7, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_tqxyr")

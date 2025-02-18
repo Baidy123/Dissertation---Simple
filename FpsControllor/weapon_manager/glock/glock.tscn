@@ -2,6 +2,34 @@
 
 [ext_resource type="PackedScene" uid="uid://etevshscplpy" path="res://FpsControllor/weapon_manager/glock/glock.glb" id="1_8m52g"]
 
+[sub_resource type="Animation" id="Animation_r6gfs"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Pistol_02_Cube:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Pistol_02_Cube:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_uqhlm"]
 length = 0.001
 tracks/0/type = "value"
@@ -27,34 +55,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_sdiqk"]
-resource_name = "Shoot"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Pistol_02_Cube:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.128668, 0.295335),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.675, 0.915), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Pistol_02_Cube:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.303478, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cj8ep"]
@@ -85,6 +85,34 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.518851, 1.4727, -0.0487636), Vector3(0.128927, 1.48493, -0.011067), Vector3(0, 0.136136, -0.010472), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_sdiqk"]
+resource_name = "Shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Pistol_02_Cube:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.128668, 0.295335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.675, 0.915), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Pistol_02_Cube:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.303478, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_nhngs"]
 resource_name = "Unholster"
 length = 0.6
@@ -113,34 +141,6 @@ tracks/1/keys = {
 "values": [Vector3(-1.36628, 0, 0), Vector3(-1.0324, 0, 0), Vector3(-0.527124, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_r6gfs"]
-resource_name = "Idle"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Pistol_02_Cube:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Pistol_02_Cube:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ijegh"]
 _data = {
 "Idle": SubResource("Animation_r6gfs"),
@@ -151,13 +151,9 @@ _data = {
 }
 
 [node name="glock" instance=ExtResource("1_8m52g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Muzzle" type="Node3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.288415, -2.13652)
-
-[node name="Pistol_02_Cube" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 root_node = NodePath("../Muzzle")

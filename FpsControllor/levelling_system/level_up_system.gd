@@ -125,7 +125,7 @@ func _unhandled_input(event: InputEvent) -> void:
 var jump_twice = false
 func qinggong(delta: float) -> void:
 	if not jump_twice and Input.is_action_just_pressed("jump"):
-		player.velocity.y = player.jump_velocity * 1.2
+		player.velocity.y = player.jump_velocity 
 		jump_twice = true
 
 	var base_multiplier = 1.0

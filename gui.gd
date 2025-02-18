@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var character = get_node("../Player")
-@onready var levelling_sys = get_node("../Player/LevellingSystem")
+@onready var character = get_node("/root/Map/NavigationRegion3D/Player")
+@onready var levelling_sys = get_node("/root/Map/NavigationRegion3D/Player")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

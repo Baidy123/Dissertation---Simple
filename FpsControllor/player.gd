@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 @export var sensitivity : float = 0.006
-@export var jump_velocity:= 6.0
+@export var jump_velocity:= 3.0
 
 var wish_dir = Vector3.ZERO
 var camera_aligned_wish_dir = Vector3.ZERO
@@ -174,10 +174,10 @@ var dmg_reduce_rate : float = 0
 func take_damage(damage: float, dmg_type: String = " "):
 	if $LevellingSystem.die_hard_active:
 		return
-	emit_signal("player_hit")
 	if perks["3b"] == true:
 		if dmg_type == "explosion":
 			return
+	emit_signal("player_hit")
 	var final_damage = damage 
 	if perks["1c"] == true:
 		final_damage = $LevellingSystem.tough_skin(final_damage)

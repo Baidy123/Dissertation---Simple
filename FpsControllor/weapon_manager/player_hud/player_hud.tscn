@@ -271,11 +271,15 @@ label_settings = SubResource("LabelSettings_t6dew")
 vertical_alignment = 1
 
 [node name="MedicReminder" type="Label" parent="."]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 477.0
-offset_right = 135.0
-offset_bottom = 539.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -146.0
+offset_right = 126.0
+offset_bottom = -84.0
+grow_vertical = 0
 text = "[H] x 10"
 label_settings = SubResource("LabelSettings_kkk44")
 
@@ -298,11 +302,18 @@ label_settings = SubResource("LabelSettings_t6dew")
 horizontal_alignment = 1
 
 [node name="WeaponLevel" type="Label" parent="."]
-layout_mode = 2
-offset_left = 895.0
-offset_top = 550.0
-offset_right = 965.0
-offset_bottom = 585.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.853
+anchor_right = 1.0
+anchor_bottom = 0.853
+offset_left = -84.0
+offset_top = -21.744
+offset_right = -4.0
+offset_bottom = 29.256
+grow_horizontal = 0
+grow_vertical = 0
 label_settings = SubResource("LabelSettings_t6dew")
 
 [node name="InteractiveWarning" type="Label" parent="."]

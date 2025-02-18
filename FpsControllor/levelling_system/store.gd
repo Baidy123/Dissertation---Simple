@@ -18,8 +18,8 @@ var selected_item_type := ""
 #var intimidation_add = 0
 #var handguns_add = 0
 #var longguns_add = 0
-@onready var character = get_node("../../Player")
-@onready var levelling_sys = get_node("../../Player/LevellingSystem")
+@onready var character = get_node("../../Map/Player")
+@onready var levelling_sys = get_node("../../Map/Player/LevellingSystem")
 
 func _ready() -> void:
 	
@@ -171,7 +171,7 @@ func _buy_weapon_logic(info: Dictionary) -> void:
 		return
 
 	# 假设你的 Player 节点或 WeaponManager 有一个 add_weapon(res) 方法
-	var weapon_manager = get_node("../../Player/WeaponManager")  # 修改成你实际的路径
+	var weapon_manager = get_node("../../Map/NavigationRegion3D/Player/WeaponManager")  # 修改成你实际的路径
 	if weapon_manager and weapon_manager.has_method("add_weapon"):
 		weapon_manager.add_weapon(weapon_resource)
 	else:

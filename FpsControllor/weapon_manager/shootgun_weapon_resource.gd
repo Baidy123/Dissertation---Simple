@@ -35,7 +35,7 @@ func fire_shot():
 			if obj is RigidBody3D:
 				obj.apply_impulse(-nrml * impact_force / obj.mass, pt -obj.global_position)
 			if obj.has_method("take_damage"):
-				obj.take_damage(self.damage * damage_multi, " ")
+				obj.take_damage(self.damage * damage_multi)
 			
 		weapon_manager.show_muzzle_flash()
 		if num_shots_fired % 3 == 0:
