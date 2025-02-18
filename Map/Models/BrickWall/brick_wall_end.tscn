@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://o8fad0v70syk"]
+[gd_scene load_steps=6 format=4 uid="uid://o8fad0v70syk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dluaw"]
 resource_name = "stone"
@@ -66,12 +66,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6bu41")
 
-[sub_resource type="Resource" id="Resource_cllta"]
-metadata/__load_path__ = "res://Models/BrickWall/brick_wall_gray.tres"
-
-[sub_resource type="Resource" id="Resource_ngklx"]
-metadata/__load_path__ = "res://Models/BrickWall/brick_wall_red.tres"
-
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vp5g4"]
 points = PackedVector3Array(0.5, 0.8239, 0.50998, 0.5, -4.74538e-19, 0.50998, 0.5, 0.8239, 0.31, 0.299922, 0.8239, 0.50998, 0.5, -4.74538e-19, 0.31, 0.299922, -4.74538e-19, 0.50998, 0.299922, 0.8239, 0.31, -0.5, 0.70188, 0.477071, -0.5, 0.0899225, 0.499996, 0.299922, -4.74538e-19, 0.31, -0.5, -4.74538e-19, 0.499996, -0.5, 0.0899225, 0.319984, -0.5, 0.70188, 0.342909, -0.5, -4.74538e-19, 0.319984)
 
@@ -83,8 +77,6 @@ collision_mask = 3
 [node name="brickWallEnd2" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_h121x")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("Resource_cllta")
-surface_material_override/1 = SubResource("Resource_ngklx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_vp5g4")

@@ -1,11 +1,11 @@
-res://Map/Models/Iteractable/interactable_grave.tscn
+res://Map/World.tscn
 res://FpsControllor/weapon_manager/player_hud/crosshair.gdshader
 res://textures/grey_checkerboard_mat.tres
-res://Map/Models/Iteractable/interactable_door.gd
 res://FpsControllor/player.tscn
 res://StarterScene.tscn
-res://Map/World.tscn
 res://FpsControllor/weapon_manager/player_hud/player_hud.tscn
-res://Map/Models/Vans/detail_barrier2.tscn
 res://Map/Models/IronFence/IronFenceBar.tscn
-res://Map/Area.gd
+res://Map/Models/Iteractable/interactable_grave.tscn
+res://Map/Models/BrickWall/brick_wall_end.tscn
+res://Map/Models/Vans/detail_barrier2.tscn
+res://Map/Models/Barriers/detail_barrier2.tscn

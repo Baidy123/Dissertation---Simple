@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://db2h3t17k37pe"]
+[gd_scene load_steps=53 format=3 uid="uid://db2h3t17k37pe"]
 
 [ext_resource type="Texture2D" uid="uid://difglsmbfmw81" path="res://Map/Textures/terrain.jpg" id="1_v880l"]
 [ext_resource type="Script" path="res://Map/World.gd" id="1_yrgup"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dl31b4pywxvjs" path="res://Map/Models/IronFence/IronFenceBar.tscn" id="11_icbei"]
 [ext_resource type="PackedScene" uid="uid://cur73rbgtv30d" path="res://Map/Models/Graves/GravestoneCrossLarge.tscn" id="13_m3off"]
 [ext_resource type="PackedScene" uid="uid://diuekj54lvc3w" path="res://Map/Models/Graves/GravestoneCross.tscn" id="14_crl1o"]
-[ext_resource type="PackedScene" uid="uid://btah88wjfju42" path="res://Map/Models/Vans/truck.tscn" id="14_e3juc"]
+[ext_resource type="PackedScene" uid="uid://btah88wjfju42" path="res://Map/Models/Barriers/truck.tscn" id="14_e3juc"]
 [ext_resource type="PackedScene" uid="uid://f4t11elb1awc" path="res://Map/Models/Decorations/altar_stone.tscn" id="15_2poy3"]
 [ext_resource type="PackedScene" uid="uid://ch476nmjfmjmw" path="res://Map/Models/Graves/GravestoneFlat.tscn" id="15_3ysjw"]
 [ext_resource type="PackedScene" uid="uid://c1bjr2eq55pue" path="res://Map/Models/Graves/CrossWood.tscn" id="16_4js5b"]
@@ -22,19 +22,18 @@
 [ext_resource type="PackedScene" uid="uid://bjt637xgdta41" path="res://Map/Models/Trees/pine_crooked_decoration.tscn" id="19_of6p0"]
 [ext_resource type="Script" path="res://Map/Area.gd" id="19_ymwy0"]
 [ext_resource type="PackedScene" uid="uid://tccjai38v8g1" path="res://Map/Models/Decorations/bench_dec.tscn" id="20_w3vkt"]
-[ext_resource type="PackedScene" uid="uid://uro5i46gn0cj" path="res://Map/Models/Vans/truck_grey_cargo.tscn" id="21_h1qd8"]
-[ext_resource type="PackedScene" uid="uid://di6wfo60cgxra" path="res://Map/Models/Vans/truck_green.tscn" id="21_hk08m"]
+[ext_resource type="PackedScene" uid="uid://uro5i46gn0cj" path="res://Map/Models/Barriers/truck_grey_cargo.tscn" id="21_h1qd8"]
+[ext_resource type="PackedScene" uid="uid://di6wfo60cgxra" path="res://Map/Models/Barriers/truck_green.tscn" id="21_hk08m"]
 [ext_resource type="PackedScene" uid="uid://bluy4ycljr8h5" path="res://Map/Models/Decorations/pumpkin_carved_dec.tscn" id="21_trcuf"]
 [ext_resource type="PackedScene" uid="uid://b6g5p5u85hdej" path="res://Map/Models/Crypt/rocks_dec.tscn" id="22_6io43"]
-[ext_resource type="PackedScene" uid="uid://0h2hvfl1et6t" path="res://Map/Models/Vans/detail_barrier.tscn" id="22_up18v"]
+[ext_resource type="PackedScene" uid="uid://0h2hvfl1et6t" path="res://Map/Models/Barriers/detail_barrier.tscn" id="22_up18v"]
 [ext_resource type="PackedScene" uid="uid://d38gkxotva0ay" path="res://Map/Models/Decorations/shovel_dirt_dec.tscn" id="23_hnvch"]
 [ext_resource type="PackedScene" uid="uid://cjjs3qtbvgvac" path="res://Map/Models/Trees/pine_crooked.tscn" id="24_844vh"]
 [ext_resource type="PackedScene" uid="uid://dsc6yq6mfbvet" path="res://Map/Models/Trees/pine_not_crooked.tscn" id="25_2dqm4"]
 [ext_resource type="PackedScene" uid="uid://dl6len7ofdorj" path="res://Map/Models/Trees/trunk.tscn" id="26_o4k17"]
 [ext_resource type="PackedScene" uid="uid://dghibg1q8ctm2" path="res://gui.tscn" id="28_t04ty"]
 [ext_resource type="PackedScene" uid="uid://dv5h2pyptm0nv" path="res://FpsControllor/player.tscn" id="31_jumwc"]
-[ext_resource type="PackedScene" uid="uid://b2sj6p645inuk" path="res://Map/Models/Buildings/barricade_doorway_c_2.tscn" id="33_1gklr"]
-[ext_resource type="PackedScene" uid="uid://bi1icrly36c3i" path="res://Map/Models/Vans/detail_barrier2.tscn" id="36_krjaq"]
+[ext_resource type="PackedScene" uid="uid://bi1icrly36c3i" path="res://Map/Models/Barriers/detail_barrier2.tscn" id="36_krjaq"]
 [ext_resource type="PackedScene" uid="uid://cam2c246nyewx" path="res://Map/Models/Iteractable/interactable_tree.tscn" id="37_nuue2"]
 [ext_resource type="PackedScene" uid="uid://vehmuxok0luv" path="res://Map/Models/Iteractable/interactable_grave.tscn" id="38_gprbt"]
 
@@ -3267,41 +3266,6 @@ transform = Transform3D(0.000820355, 0, 1, 0, 1, 0, -1, 0, 0.000820355, 8.22036,
 [node name="detail-barrier-strong-type-b7" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("22_up18v")]
 transform = Transform3D(0.000820355, 0, 1, 0, 1, 0, -1, 0, 0.000820355, 8.22036, 0.000999928, -7.59586)
 
-[node name="barricade-doorway-c2" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("33_1gklr")]
-transform = Transform3D(0.0265433, 0, -0.999648, 0, 1, 0, 0.999648, 0, 0.0265433, -5.7542, 0.000999928, -20.2603)
-collision_layer = 3
-collision_mask = 3
-
-[node name="barricade-doorway-c3" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("33_1gklr")]
-transform = Transform3D(0.0265433, 0, -0.999648, 0, 1, 0, 0.999648, 0, 0.0265433, -4.3341, 0.000999928, -20.2603)
-collision_layer = 3
-collision_mask = 3
-
-[node name="barricade-doorway-c4" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("33_1gklr")]
-transform = Transform3D(0.0265433, 0, -0.999648, 0, 1, 0, 0.999648, 0, 0.0265433, -3.0085, 0.000999928, -20.2603)
-collision_layer = 3
-collision_mask = 3
-
-[node name="barricade-doorway-c9" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("33_1gklr")]
-transform = Transform3D(0.0265433, 0, -0.999648, 0, 1, 0, 0.999648, 0, 0.0265433, 2.3008, 0.000999928, -20.2603)
-collision_layer = 3
-collision_mask = 3
-
-[node name="barricade-doorway-c10" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("33_1gklr")]
-transform = Transform3D(0.0265433, 0, -0.999648, 0, 1, 0, 0.999648, 0, 0.0265433, 3.6247, 0.000999928, -20.2603)
-collision_layer = 3
-collision_mask = 3
-
-[node name="barricade-doorway-c11" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("33_1gklr")]
-transform = Transform3D(0.0265433, 0, -0.999648, 0, 1, 0, 0.999648, 0, 0.0265433, 4.88448, 0.000999928, -20.2603)
-collision_layer = 3
-collision_mask = 3
-
-[node name="barricade-doorway-c12" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("33_1gklr")]
-transform = Transform3D(0.0265433, 0, -0.999648, 0, 1, 0, 0.999648, 0, 0.0265433, 6.24468, 0.000999928, -20.2603)
-collision_layer = 3
-collision_mask = 3
-
 [node name="InvisibleWall" type="StaticBody3D" parent="Map/NavigationRegion3D/HouseRight"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/NavigationRegion3D/HouseRight/InvisibleWall"]
@@ -3315,6 +3279,15 @@ script = ExtResource("19_ymwy0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/NavigationRegion3D/HouseRight/Area4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80337, 6.83716, -4.87009)
 shape = SubResource("BoxShape3D_gvd7w")
+
+[node name="detail-barrier4" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("36_krjaq")]
+transform = Transform3D(0.998955, 0, 0.0457116, 0, 1, 0, -0.0457116, 0, 0.998955, 5.19228, 0.000999928, -19.7556)
+
+[node name="detail-barrier5" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("36_krjaq")]
+transform = Transform3D(0.785371, 0, 0.619026, 0, 1, 0, -0.619026, 0, 0.785371, 2.0876, 0.000999928, -18.9528)
+
+[node name="detail-barrier6" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("36_krjaq")]
+transform = Transform3D(0.998836, 0, 0.0482396, 0, 1, 0, -0.0482396, 0, 0.998836, -3.40466, 0.000999928, -19.3475)
 
 [node name="Lightposts" type="Node3D" parent="Map/NavigationRegion3D"]
 
