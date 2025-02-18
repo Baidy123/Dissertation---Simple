@@ -16,15 +16,17 @@ func _on_interactable_component_interacted() -> void:
 		if local_player.currency < cost:
 			return
 		local_player.currency -= cost
-	get_tree().call_group("Doors","new_door_opened")
-	$InteractableComponent.queue_free()
-	$AnimationPlayer.play("Open")
+		get_tree().call_group("Doors","new_door_opened")
+		$InteractableComponent.queue_free()
+		$AnimationPlayer.play("Open")
 	
-	#door_opend += 1
-	#map.door_opened = door_opend
-	$Label3D.visible = false
-	await  get_tree().create_timer(3).timeout
-	queue_free()
+		#door_opend += 1
+		#map.door_opened = door_opend
+		$Label3D.visible = false
+		await  get_tree().create_timer(3).timeout
+		queue_free()
+	else:
+		print("no player found")
 	
 func _on_other_interactable_component_interacted() -> void:
 	#await  get_tree().create_timer(3).timeout

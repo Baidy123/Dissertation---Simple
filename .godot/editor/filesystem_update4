@@ -9,3 +9,5 @@ res://Map/Models/Iteractable/interactable_grave.tscn
 res://Map/Models/BrickWall/brick_wall_end.tscn
 res://Map/Models/Vans/detail_barrier2.tscn
 res://Map/Models/Barriers/detail_barrier2.tscn
+res://Map/Models/Iteractable/interactable_tree.tscn
+res://Map/Models/Iteractable/interactable_door.gd

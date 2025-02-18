@@ -2652,9 +2652,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1673, 0, 10.5568)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.842316, 2.97764, -1.02934)
 shape = SubResource("BoxShape3D_wc3fj")
 
-[node name="InteractableTree" parent="Map/NavigationRegion3D/GravesLeft" instance=ExtResource("37_nuue2")]
-transform = Transform3D(0.821647, 0, 0.569997, 0, 1, 0, -0.569997, 0, 0.821647, 12.3449, 0.000999451, -4.96151)
-
 [node name="Area6" type="Area3D" parent="Map/NavigationRegion3D/GravesLeft"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5326, 0, -7.87893)
@@ -3866,7 +3863,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -9)
 
 [node name="bench12" parent="Map/NavigationRegion3D/Decorations" instance=ExtResource("20_w3vkt")]
-transform = Transform3D(0.0119015, -0.983959, -0.177995, -0.00215284, 0.177982, -0.984031, 0.999927, 0.0120947, -4.37082e-08, 6.74926, 0.706746, -13)
+transform = Transform3D(0.0119015, -0.983959, -0.177995, -0.00215284, 0.177982, -0.984031, 0.999927, 0.0120947, -4.37082e-08, 6.74926, 0.173672, -13)
 
 [node name="bench7" parent="Map/NavigationRegion3D/Decorations" instance=ExtResource("20_w3vkt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 34, 0, 16)
@@ -4107,16 +4104,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.764, 0.690741, -9.20333)
 [node name="InteractableTree6" parent="Map/IteractableItems" groups=["Doors"] instance=ExtResource("37_nuue2")]
 transform = Transform3D(0.104303, 0, 0.994546, 0, 1, 0, -0.994546, 0, 0.104303, -21.1271, 0.690741, 13.4595)
 
+[node name="InteractableGrave5" parent="Map/IteractableItems" groups=["Doors"] instance=ExtResource("38_gprbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0246, 0.000999928, 4.3988)
+
+[node name="InteractableGrave6" parent="Map/IteractableItems" groups=["Doors"] instance=ExtResource("38_gprbt")]
+transform = Transform3D(0.0126358, 0, 0.99992, 0, 1, 0, -0.99992, 0, 0.0126358, 20.4787, 0.0767825, -6.86935)
+
+[node name="InteractableTree" parent="Map/IteractableItems" groups=["Doors"] instance=ExtResource("37_nuue2")]
+transform = Transform3D(0.821647, 0, 0.569997, 0, 1, 0, -0.569997, 0, 0.821647, 13.3449, 0.000999451, -4.96151)
+
 [node name="Player" parent="Map" instance=ExtResource("31_jumwc")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0912757, 31)
 
 [node name="GUI" parent="." instance=ExtResource("28_t04ty")]
-
-[node name="InteractableGrave" parent="." instance=ExtResource("38_gprbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0246, 0.000999928, 4.3988)
-
-[node name="InteractableGrave2" parent="." instance=ExtResource("38_gprbt")]
-transform = Transform3D(0.0126358, 0, 0.99992, 0, 1, 0, -0.99992, 0, 0.0126358, 20.4787, 0.0767825, -6.86935)
 
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]

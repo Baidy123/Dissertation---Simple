@@ -169,4 +169,3 @@ shape = SubResource("CylinderShape3D_2qj2i")
 script = ExtResource("4_rl2cn")
 
 [connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
-[connection signal="interacted" from="InteractableComponent" to="AnimationPlayer" method="play" binds= ["Open"]]
