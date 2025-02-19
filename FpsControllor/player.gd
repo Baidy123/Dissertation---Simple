@@ -230,7 +230,7 @@ func take_damage(damage: float, dmg_type: String = " "):
 			health = 1
 		else:
 			health = 0
-			get_tree().change_scene_to_file("res://StarterScene.tscn")
+			get_tree().change_scene_to_file("res://Map/MainMenu/MainMenu.tscn")
 			
 func use_medic():
 	var medicine = weapons["medkit"]["owned_quantity"]
@@ -616,23 +616,7 @@ func _handle_noclip(delta) -> bool:
 	
 func gain_money(amt: int):
 	currency += amt
-	#return_req_exp()
-	
-#func on_level_up(skill_points_gain: int):
-#
-	#health = max_health
-	#skill_available_points += skill_points_gain
-	#curr_level = $LevellingSystem.curr_level
-	#if curr_level %2 == 0:
-		#skill_available_points += skill_points_gain
-		#perk_available_points += 1
-		#$PlayerHUD.get_node("Reminder").set_text("Level Up!!!" + "\n" + "New Perk Point Gained!!!")
-		#$PlayerHUD.get_node("Reminder").set_visible(true)
-	#else:
-		#$PlayerHUD.get_node("Reminder").set_text("Level Up!!!")
-		#$PlayerHUD.get_node("Reminder").set_visible(true)
-	#await get_tree().create_timer(3.0).timeout
-	#$PlayerHUD.get_node("Reminder").set_visible(false)
+
 @onready var animation_tree : AnimationTree = $"WorldModel/desert droid container/AnimationTree"
 @onready var state_machine_playback : AnimationNodeStateMachinePlayback = $"WorldModel/desert droid container/AnimationTree".get("parameters/playback")
 

@@ -15,7 +15,7 @@ var dmg = 30
 var round_modifier: int = 10
 var is_dead := false
 var max_damage: int = 100
-
+var attack_range = ATTACK_RANGE
 @export var player_path := "../Player"
 
 @onready var nav_agent = $NavigationAgent3D
@@ -59,7 +59,6 @@ func _snap_up_to_stairs_check(delta) -> bool :
 		%StairsAheadRayCast3D.global_position = down_check_result.get_collision_point() + Vector3(0,MAX_STEP_HEIGHT,0) + expected_move_motion.normalized() * 0.1
 		%StairsAheadRayCast3D.force_raycast_update()
 		if %StairsAheadRayCast3D.is_colliding():
-			#print("111")
 			self.global_position = step_pos_with_clearance.origin + down_check_result.get_travel()
 			apply_floor_snap()
 			#_snapped_to_stairs_last_frame = true
@@ -81,16 +80,18 @@ func _process(delta):
 	if self.global_position.y < -0.6:
 		emit_signal("zombie_died")
 		queue_free()
+		
+	if !nav_agent.is_target_reachable() and player.is_on_floor():
+		attack_range = ATTACK_RANGE * 3
+	else:
+		attack_range = ATTACK_RANGE
+		
 	match state_machine.get_current_node():
-		"Walk":
-			nav_agent.set_target_position(player.global_transform.origin)
-			var next_nav_point = nav_agent.get_next_path_position()
-			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
-			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10.0)
 		"Run":
 			# Navigation
 			nav_agent.set_target_position(player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
+			#print(nav_agent.is_target_reachable())
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10.0)
 		"Attack":
@@ -107,15 +108,15 @@ func _process(delta):
 
 func _target_in_range():
 	if anim_tree.get("parameters/conditions/attack"):
-		return global_position.distance_to(player.global_position) < 1.2 * ATTACK_RANGE
-	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+		return global_position.distance_to(player.global_position) < 1.2 * attack_range
+	return global_position.distance_to(player.global_position) < attack_range
 	
 
 
 
 
 func _hit_finished():
-	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
+	if global_position.distance_to(player.global_position) < attack_range + 1.0:
 		var dir = global_position.direction_to(player.global_position)
 		player.take_damage(dmg)
 

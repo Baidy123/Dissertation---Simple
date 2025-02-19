@@ -357,7 +357,6 @@ shadow_mesh = SubResource("ArrayMesh_3g3h4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iixij"]
 resource_name = "mat21"
-albedo_color = Color(1, 1, 1, 1)
 emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qvtor"]

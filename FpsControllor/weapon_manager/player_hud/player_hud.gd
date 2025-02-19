@@ -153,5 +153,7 @@ func _process(delta: float) -> void:
 
 func _on_player_player_hit() -> void:
 	$PlayerHit.visible = true
-	await get_tree().create_timer(0.2).timeout
-	$PlayerHit.visible = false
+	
+	if get_tree() != null:
+		await get_tree().create_timer(0.2).timeout
+		$PlayerHit.visible = false

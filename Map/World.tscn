@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://db2h3t17k37pe"]
+[gd_scene load_steps=67 format=4 uid="uid://db2h3t17k37pe"]
 
 [ext_resource type="Texture2D" uid="uid://difglsmbfmw81" path="res://Map/Textures/terrain.jpg" id="1_v880l"]
 [ext_resource type="Script" path="res://Map/World.gd" id="1_yrgup"]
@@ -209,9 +209,6 @@ size = Vector3(92.4226, 18.1488, 25.0196)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ajfut"]
 size = Vector3(21.2298, 14.4502, 37.7221)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tuchf"]
-size = Vector3(1, 7.76514, 19.9272)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gvd7w"]
 size = Vector3(12.0954, 14.6743, 30.718)
@@ -3462,12 +3459,6 @@ transform = Transform3D(0.000820355, 0, 1, 0, 1, 0, -1, 0, 0.000820355, 8.22036,
 
 [node name="detail-barrier-strong-type-b7" parent="Map/NavigationRegion3D/HouseRight" instance=ExtResource("22_up18v")]
 transform = Transform3D(0.000820355, 0, 1, 0, 1, 0, -1, 0, 0.000820355, 8.22036, 0.000999928, -7.59586)
-
-[node name="InvisibleWall" type="StaticBody3D" parent="Map/NavigationRegion3D/HouseRight"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/NavigationRegion3D/HouseRight/InvisibleWall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92669, 3.38257, 1.24194)
-shape = SubResource("BoxShape3D_tuchf")
 
 [node name="Area4" type="Area3D" parent="Map/NavigationRegion3D/HouseRight" groups=["Area1", "Area3"]]
 unique_name_in_owner = true
