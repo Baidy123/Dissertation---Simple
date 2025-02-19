@@ -35,7 +35,7 @@ func fire_shot():
 	obj.linear_velocity = weapon_manager.player.velocity + raycast.global_transform.basis * projectile_relative_velocity
 	
 	weapon_manager.show_muzzle_flash()
-	weapon_manager.apply_recoil(0. , 0.)
+	weapon_manager.apply_recoil(1 , 0.)
 	
 	last_fire_time = Time.get_ticks_msec()
 	current_ammo -= 1

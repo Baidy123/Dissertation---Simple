@@ -1,7 +1,61 @@
 [gd_scene load_steps=8 format=4 uid="uid://btah88wjfju42"]
 
 [ext_resource type="Texture2D" uid="uid://cxrafpqgl0diu" path="res://Map/Models/Barriers/Textures/truck.png" id="1_56lis"]
-[ext_resource type="Texture2D" uid="uid://yye6drygs2nq" path="res://Map/Models/Barriers/Textures/metal.png" id="2_dxiwa"]
+[ext_resource type="Texture2D" uid="uid://b3ub8n48jlvrd" path="res://Map/Models/Barriers/Textures/metal.png" id="2_dxiwa"]
+
+[sub_resource type="GDScript" id="GDScript_0eugj"]
+script/source = "@tool
+extends CSGBox3D
+
+@export var num_stairs : int = 10
+
+var _cur_num_stairs = -1
+var _cur_size : Vector3
+
+func make_stairs():
+	#if not Engine.is_editor_hint():
+		#return
+	#
+	num_stairs = clampi(num_stairs, 0, 999)
+
+	var stairs_poly = $StairsSubtractCSG#add_fresh_stairs_csg_poly()
+	
+	var point_arr : PackedVector2Array = PackedVector2Array()
+	var step_height = self.size.y / num_stairs
+	var step_width = self.size.x / num_stairs
+	
+	if num_stairs == 0:
+		# For 0 stairs make a ramp
+		point_arr.append(Vector2(self.size.x, self.size.y))
+		point_arr.append(Vector2(0, self.size.y))
+		point_arr.append(Vector2(0, 0))
+	else:
+		# Creating the points for the stairs polygon
+		for i in range(num_stairs - 1):
+			point_arr.append(Vector2(i * step_width, (i + 1) * step_height))
+			if i < num_stairs:
+				point_arr.append(Vector2((i + 1) * step_width, (i + 1) * step_height))
+
+		# Closing the polygon by adding the last two points
+		point_arr.append(Vector2(self.size.x - step_width, self.size.y))
+		point_arr.append(Vector2(0, self.size.y))
+	
+	stairs_poly.polygon = point_arr
+		
+	stairs_poly.depth = self.size.z
+	
+	stairs_poly.position.z = self.size.z / 2.0
+	stairs_poly.position.y = -self.size.y / 2.0
+	stairs_poly.position.x = -self.size.x / 2.0
+
+	_cur_num_stairs = num_stairs
+	_cur_size = self.size
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if _cur_num_stairs != num_stairs or _cur_size != self.size:
+		make_stairs()
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1kj1"]
 resource_name = "truck"
@@ -13,7 +67,7 @@ resource_name = "metal"
 shading_mode = 0
 albedo_texture = ExtResource("2_dxiwa")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_d8jqs"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_wu5vc"]
 _surfaces = [{
 "aabb": AABB(-0.415, 0, -0.8217, 0.83, 1.00596, 1.6434),
 "format": 34896613377,
@@ -37,7 +91,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_13s30"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pfbs4"]
 resource_name = "truck-flat_truck-flat"
 _surfaces = [{
 "aabb": AABB(-0.415, 0, -0.8217, 0.83, 1.00596, 1.6434),
@@ -65,20 +119,26 @@ _surfaces = [{
 "vertex_data": PackedByteArray("i9EAAAAA//+L0QAA/////3MuAAAAAP//cy4AAP//////////AAD/////////////i9H//wAA//+L0f///////3Mu//8AAP//cy7///////8AAP//AAD//wAA/////////3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_d8jqs")
+shadow_mesh = SubResource("ArrayMesh_wu5vc")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tqxyr"]
-points = PackedVector3Array(0.412667, 1.006, -0.546944, -0.414022, 0.00395242, -0.6308, -0.41241, 0.0814, -0.804424, -0.428043, 1.03039, -0.339094, 0.415, 0.0836173, 0.800249, 0.415, 0.0836173, -0.800249, -0.428043, 0.352198, 0.834743, 0.432786, 0.3523, 0.834743, -0.415, 0.00276669, 0.607086, -0.41255, 0.76004, -0.754284, 0.415, 0.00851562, -0.625097, 0.432786, 1.03039, -0.339094, 0.393172, 0.584297, -0.806885, 0.415, 0.00851562, 0.600187, -0.41241, 0.0814, 0.804424, -0.412913, 0.986819, -0.578822, 0.415, 0.758651, -0.750116, -0.413694, 0.584201, -0.806914, -0.407925, 1.006, -0.546944, 0.415, 0.983761, -0.575121, 0.415, 0.583675, -0.800249, 0.415, 0.683648, -0.775183)
+[node name="truck-flat2" type="Node3D"]
 
-[node name="truck-flat2" type="StaticBody3D"]
+[node name="CSGStairMaker3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.405762, 3, -0.00448608)
+use_collision = true
 collision_layer = 3
 collision_mask = 3
+size = Vector3(10.8115, 5, 5.77631)
+script = SubResource("GDScript_0eugj")
+num_stairs = 0
+
+[node name="StairsSubtractCSG" type="CSGPolygon3D" parent="CSGStairMaker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40576, -2.5, 2.88815)
+operation = 2
+polygon = PackedVector2Array(10.8115, 5, 0, 5, 0, 0)
+depth = 5.77631
 
 [node name="truck-flat" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 7, 0, 0, 0)
-mesh = SubResource("ArrayMesh_13s30")
+transform = Transform3D(-7.27401e-08, 2.34076, -7.19154, -7.75637e-07, -5.13681, -3.27707, -5.645, 6.75649e-07, 5.42946e-07, -0.894168, 3.25805, -0.00448608)
+mesh = SubResource("ArrayMesh_pfbs4")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 7, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_tqxyr")

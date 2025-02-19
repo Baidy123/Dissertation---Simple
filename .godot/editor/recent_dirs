@@ -1,13 +1,11 @@
-res://Map
-res://Map/Models/Vans
-res://Map/Models/Iteractable
+res://Map/Models/Interactable
+res://models/enemy
 res://Map/Models/Trees
+res://Map
 res://Map/Models/Road
-res://Map/Models/Buildings
 res://FpsControllor
 res://
 res://FpsControllor/weapon_manager/glock
-res://models/enemy
 res://models/Enemy
 res://FpsControllor/levelling_system
 res://FpsControllor/weapon_manager/shotgun

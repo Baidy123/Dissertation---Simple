@@ -8,7 +8,7 @@
 script/source = "extends Node3D
 
 @export var explosion_force = 7.0
-@export var max_explosion_dist = 3.5
+@export var max_explosion_dist = 5
 @export var explosion_damage = 45
 
 # Called when the node enters the scene tree for the first time.
@@ -225,7 +225,8 @@ process_material = SubResource("ParticleProcessMaterial_s2ah5")
 draw_pass_1 = SubResource("QuadMesh_jrlsi")
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_mask = 3
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_1q0ia")

@@ -1,12 +1,11 @@
 extends Area3D
 
-var player = null
-var player_path = "../../../Player"
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	player = get_node(player_path)
+@onready var world = $"../../../.."  # 获取 Timer 节点
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if has_overlapping_areas():
-		print(self.name)
+func _on_body_entered(body):
+	#print("111")
+	if body.is_in_group("Player"):
+		var all_groups = get_groups()  # 获取当前节点的所有组
+		if all_groups.size() > 0:
+			var random_group = all_groups[randi() % all_groups.size()]  # 随机选一个组
+			world.new_area_entered(random_group)

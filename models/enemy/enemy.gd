@@ -13,18 +13,24 @@ var health = 100
 @export var base_dmg := 30
 var dmg = 30
 var round_modifier: int = 10
-
+var is_dead := false
 var max_damage: int = 100
 
 @export var player_path := "../Player"
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
-@export var waves := 20
+@export var waves : int
 
+#var _snapped_to_stairs_last_frame := false
+var _last_frame_was_on_floor := -INF
+const MAX_STEP_HEIGHT = 0.5
+signal zombie_died()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = int(base_health * 1.1 ** (waves-1))
+	$Hp.text = str(health)
+	#print(health)
 	if waves <= 1:
 		dmg = base_dmg
 	else:
@@ -39,10 +45,42 @@ func _ready():
 
 
 
+func _snap_up_to_stairs_check(delta) -> bool :
+	#if not is_on_floor() and not _snapped_to_stairs_last_frame : 
+		#return false
+	var expected_move_motion = self.velocity * Vector3(1,0,1) * delta
+	var step_pos_with_clearance = self.global_transform.translated(expected_move_motion + Vector3(0,MAX_STEP_HEIGHT * 2, 0))
+	var down_check_result = PhysicsTestMotionResult3D.new()
+	if(_run_body_test_motion(step_pos_with_clearance, Vector3(0,-MAX_STEP_HEIGHT * 2, 0), down_check_result) 
+	and (down_check_result.get_collider().is_class("StaticBody3D") or down_check_result.get_collider().is_class("CSGShape3D"))):
+		var step_height = ((step_pos_with_clearance.origin + down_check_result.get_travel()) - self.global_position).y
+		if step_height > MAX_STEP_HEIGHT or step_height <= 0.01 or (down_check_result.get_travel() - self.global_position).y > MAX_STEP_HEIGHT: 
+			return false
+		%StairsAheadRayCast3D.global_position = down_check_result.get_collision_point() + Vector3(0,MAX_STEP_HEIGHT,0) + expected_move_motion.normalized() * 0.1
+		%StairsAheadRayCast3D.force_raycast_update()
+		if %StairsAheadRayCast3D.is_colliding():
+			#print("111")
+			self.global_position = step_pos_with_clearance.origin + down_check_result.get_travel()
+			apply_floor_snap()
+			#_snapped_to_stairs_last_frame = true
+			return true
+	return false
+	
+func _run_body_test_motion(from: Transform3D, motion: Vector3, result = null) -> bool:
+	if not result: 
+		result = PhysicsTestMotionResult3D.new()
+		
+	var param = PhysicsTestMotionParameters3D.new()
+	param.from = from
+	param.motion = motion
+	return PhysicsServer3D.body_test_motion(self.get_rid(), param, result)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity = Vector3.ZERO
-	
+	if self.global_position.y < -0.6:
+		emit_signal("zombie_died")
+		queue_free()
 	match state_machine.get_current_node():
 		"Walk":
 			nav_agent.set_target_position(player.global_transform.origin)
@@ -61,9 +99,10 @@ func _process(delta):
 	# Conditions
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
 	anim_tree.set("parameters/conditions/run", !_target_in_range())
-	
-	
+	#_snapped_to_stairs_last_frame = false
+	_snap_up_to_stairs_check(delta)
 	move_and_slide()
+
 
 
 func _target_in_range():
@@ -82,14 +121,20 @@ func _hit_finished():
 
 
 func _on_area_3d_body_part_hit(dmg, critical_multi) -> void:
-	#print("hit")
+	if is_dead:
+		return
 	health -= dmg * critical_multi
 	player.currency += 10 * critical_multi
 
 	if health <= 0:
+		if not is_dead:
+			is_dead = true
 		player.currency += 100
+		#for hitbox in get_tree().get_nodes_in_group("enemy"):
+			#hitbox.queue_free()
 		if $CollisionShape3D:
 			$CollisionShape3D.queue_free()
 		anim_tree.set("parameters/conditions/die", true)
+		emit_signal("zombie_died")
 		await get_tree().create_timer(6).timeout
 		queue_free()

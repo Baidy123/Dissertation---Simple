@@ -44,8 +44,6 @@ shadow_mesh = SubResource("ArrayMesh_5c6mv")
 size = Vector3(1.9, 2.54578, 0.1)
 
 [node name="ironFence" type="StaticBody3D"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="ironFence2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://0h2hvfl1et6t"]
 
-[ext_resource type="Texture2D" uid="uid://bpesbl683d5ce" path="res://Map/Models/Barriers/Textures/concrete.png" id="1_2u15c"]
-[ext_resource type="Texture2D" uid="uid://bpustbkw4nqqa" path="res://Map/Models/Barriers/Textures/signs.png" id="2_2x5fo"]
+[ext_resource type="Texture2D" uid="uid://cag1nyq2ka2x8" path="res://Map/Models/Barriers/Textures/concrete.png" id="1_2u15c"]
+[ext_resource type="Texture2D" uid="uid://d02ko8fo7cvgf" path="res://Map/Models/Barriers/Textures/signs.png" id="2_2x5fo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg7u4"]
 resource_name = "concrete"

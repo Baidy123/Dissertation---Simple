@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 @export var sensitivity : float = 0.006
-@export var jump_velocity:= 3.0
+@export var jump_velocity:= 4.5
 
 var wish_dir = Vector3.ZERO
 var camera_aligned_wish_dir = Vector3.ZERO
@@ -84,14 +84,14 @@ signal player_hit()
 				"description" : "This is the Description for p90",
 				"file_path": "res://FpsControllor/weapon_manager/p90/p90.tres"
 				},
-	"knife" :   {
-				"name" : "knife",
-				"owned" : true,
-				"price" : 1,
-				"type": "weapon",
-				"description" : "This is the Description for knife",
-				"file_path": "res://FpsControllor/weapon_manager/knife/knife.tres"
-				},
+	#"knife" :   {
+				#"name" : "knife",
+				#"owned" : true,
+				#"price" : 1,
+				#"type": "weapon",
+				#"description" : "This is the Description for knife",
+				#"file_path": "res://FpsControllor/weapon_manager/knife/knife.tres"
+				#},
 	"rpg" :     {
 				"name" : "rpg",
 				"owned" : false,
@@ -106,6 +106,46 @@ signal player_hit()
 				"price" : 1,
 				"type": "weapon",
 				"description" : "This is the Description for nade",
+				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				},
+	"m4" :		{
+				"name" : "m4",
+				"owned" : false,
+				"price" : 1,
+				"type": "weapon",
+				"description" : "This is the Description for m4",
+				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				},
+	"ak47" :	{
+				"name" : "ak47",
+				"owned" : false,
+				"price" : 1,
+				"type": "weapon",
+				"description" : "This is the Description for ak47",
+				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				},
+	"aa12" :	{
+				"name" : "aa12",
+				"owned" : false,
+				"price" : 1,
+				"type": "weapon",
+				"description" : "This is the Description for aa12",
+				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				},
+	"axe" :		{
+				"name" : "axe",
+				"owned" : false,
+				"price" : 1,
+				"type": "weapon",
+				"description" : "This is the Description for axe",
+				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				},
+	"sawed_off" :		{
+				"name" : "sawed_off",
+				"owned" : false,
+				"price" : 1,
+				"type": "weapon",
+				"description" : "This is the Description for sawed_off",
 				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
 				},
 	"medkit": 	{
@@ -201,6 +241,10 @@ func use_medic():
 		health = max_health
 	weapons["medkit"]["owned_quantity"] -= 1
 
+func return_upgrade_costs():
+	var current_weapon = $WeaponManager.current_weapon
+	return min(20000, current_weapon.upgrade_money)
+		
 func upgrade_weapon():
 	var current_weapon = $WeaponManager.current_weapon
 	if current_weapon.has_lvl:
@@ -227,6 +271,10 @@ func upgrade_weapon():
 		$PlayerHUD.get_node("InteractiveWarning").set_visible(false)
 		return
 	
+func return_fullfill_costs():
+	var current_weapon = $WeaponManager.current_weapon
+	return current_weapon.fullfill_money
+
 func fullfill_ammo():
 	var current_weapon = $WeaponManager.current_weapon
 	if (current_weapon.current_ammo and
@@ -353,10 +401,6 @@ func _snap_up_to_stairs_check(delta) -> bool :
 			return true
 	return false
 
-var target_recoil := Vector2.ZERO
-var current_recoil := Vector2.ZERO
-const RECOIL_APPLY_SPEED : float = 10.0
-const RECOIL_RECOVER_SPEED : float = 7.0
 
 func _push_away_rigid_bodies():
 	for i in get_slide_collision_count():
@@ -379,6 +423,10 @@ func _push_away_rigid_bodies():
 			var push_force = mass_ratio * 5.0
 			c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
 			
+var target_recoil := Vector2.ZERO
+var current_recoil := Vector2.ZERO
+const RECOIL_APPLY_SPEED : float = 10.0
+const RECOIL_RECOVER_SPEED : float = 7.0
 func add_recoil(pitch: float, yaw: float) -> void:
 	if perks["2b"] == true:
 		target_recoil.x = $LevellingSystem.cowboy(pitch)

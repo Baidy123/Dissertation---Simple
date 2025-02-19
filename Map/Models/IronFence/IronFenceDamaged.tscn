@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://d0qvy2xav57a6"]
 
 [ext_resource type="Script" path="res://Map/Models/Iteractable/iron_fence_damaged.gd" id="1_extv2"]
-[ext_resource type="Script" path="res://Map/Models/Iteractable/InteractableComponent.gd" id="2_8rowq"]
+[ext_resource type="Script" path="res://Map/Models/Interactable/InteractableComponent.gd" id="2_8rowq"]
 [ext_resource type="Material" uid="uid://csmolge7ui80" path="res://Map/Models/IronFence/metal.tres" id="2_gmmbp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n85rk"]
