@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://cumlkudt7n44b"]
+[gd_scene load_steps=70 format=4 uid="uid://cumlkudt7n44b"]
 
 [ext_resource type="Material" uid="uid://bk7nbd8td4gb1" path="res://textures/grey_checkerboard_mat.tres" id="1_1bstl"]
 [ext_resource type="Texture2D" uid="uid://d1uelfks0ip1w" path="res://textures/grid_image.png" id="2_uym2f"]
@@ -214,50 +214,6 @@ _data = {
 [sub_resource type="BoxMesh" id="BoxMesh_i7efb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0llak"]
-
-[sub_resource type="GDScript" id="GDScript_tgehm"]
-script/source = "extends AnimatableBody3D
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float):
-	#$MeshInstance3D.visible = !!$InteractableComponent.get_character_hovered_by_cur_camera()
-	var character = $InteractableComponent.get_character_hovered_by_cur_camera()
-	if character:
-		character.get_node(\"PlayerHUD\").get_node(\"InteractiveText\").text = str(character.get_node(\"WeaponManager\").current_weapon.fullfill_money)
-		character.get_node(\"PlayerHUD\").get_node(\"InteractiveText\").visible = true
-	else:
-		if has_node(\"../../Player\"):
-			#print(\"nmsl\")
-			var local_player = get_node(\"../../Player\")
-			#print(local_player)
-			local_player.get_node(\"PlayerHUD\").get_node(\"InteractiveText\").visible = false
-	
-"
-
-[sub_resource type="Animation" id="Animation_666is"]
-resource_name = "door_open"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.356, 0), Vector3(0, 1.00424, 0), Vector3(0, 0.356, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_awr1o"]
-_data = {
-"door_open": SubResource("Animation_666is")
-}
-
-[sub_resource type="BoxMesh" id="BoxMesh_p61x0"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6symi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35iws"]
 albedo_color = Color(0.447059, 0.447059, 0.447059, 1)
@@ -818,56 +774,6 @@ shape = SubResource("BoxShape3D_0llak")
 [node name="InteractableComponent" type="Node" parent="NavigationRegion3D/Door"]
 script = ExtResource("8_252b7")
 
-[node name="Button" type="AnimatableBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3498, -0.97261, -32.7715)
-collision_layer = 3
-collision_mask = 3
-script = SubResource("GDScript_tgehm")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NavigationRegion3D/Button"]
-libraries = {
-"": SubResource("AnimationLibrary_awr1o")
-}
-
-[node name="Node3D" type="Node3D" parent="NavigationRegion3D/Button"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Button/Node3D"]
-transform = Transform3D(0.538082, 0, 0, 0, 0.67345, 0, 0, 0, 0.0378175, 0, 0.356109, 0)
-mesh = SubResource("BoxMesh_p61x0")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Button"]
-transform = Transform3D(0.538, 0, 0, 0, 0.673, 0, 0, 0, 0.038, 0, 0.356, 0)
-shape = SubResource("BoxShape3D_6symi")
-
-[node name="InteractableComponent" type="Node" parent="NavigationRegion3D/Button"]
-script = ExtResource("8_252b7")
-
-[node name="Button2" type="AnimatableBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2997, -0.97261, -32.7715)
-collision_layer = 3
-collision_mask = 3
-script = SubResource("GDScript_tgehm")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NavigationRegion3D/Button2"]
-libraries = {
-"": SubResource("AnimationLibrary_awr1o")
-}
-
-[node name="Node3D" type="Node3D" parent="NavigationRegion3D/Button2"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Button2/Node3D"]
-transform = Transform3D(0.538082, 0, 0, 0, 0.67345, 0, 0, 0, 0.0378175, 0, 0.356109, 0)
-mesh = SubResource("BoxMesh_p61x0")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Button2"]
-transform = Transform3D(0.538, 0, 0, 0, 0.673, 0, 0, 0, 0.038, 0, 0.356, 0)
-shape = SubResource("BoxShape3D_6symi")
-
-[node name="InteractableComponent" type="Node" parent="NavigationRegion3D/Button2"]
-script = ExtResource("8_252b7")
-
 [node name="Ladder" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.9307, 6.49674, 2.62351)
 
@@ -1092,9 +998,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.164, -0.972599, -27.2007)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7578, -0.97261, -20.5945)
 
 [connection signal="interacted" from="NavigationRegion3D/Door/InteractableComponent" to="NavigationRegion3D/Door" method="toggle_open"]
-[connection signal="interacted" from="NavigationRegion3D/Button/InteractableComponent" to="GUI" method="_on_interactable_component_interacted"]
-[connection signal="interacted" from="NavigationRegion3D/Button/InteractableComponent" to="NavigationRegion3D/Door" method="toggle_open"]
-[connection signal="interacted" from="NavigationRegion3D/Button/InteractableComponent" to="NavigationRegion3D/Button/AnimationPlayer" method="play" binds= ["door_open"]]
-[connection signal="interacted" from="NavigationRegion3D/Button2/InteractableComponent" to="GUI" method="_on_interactable_component_interacted"]
-[connection signal="interacted" from="NavigationRegion3D/Button2/InteractableComponent" to="NavigationRegion3D/Door" method="toggle_open"]
-[connection signal="interacted" from="NavigationRegion3D/Button2/InteractableComponent" to="NavigationRegion3D/Button2/AnimationPlayer" method="play" binds= ["door_open"]]

@@ -23,7 +23,6 @@ var attack_range = ATTACK_RANGE
 @export var waves : int
 
 #var _snapped_to_stairs_last_frame := false
-var _last_frame_was_on_floor := -INF
 const MAX_STEP_HEIGHT = 0.5
 signal zombie_died()
 # Called when the node enters the scene tree for the first time.
@@ -126,7 +125,7 @@ func _on_area_3d_body_part_hit(dmg, critical_multi) -> void:
 		return
 	health -= dmg * critical_multi
 	player.currency += 10 * critical_multi
-
+	$Hp.text = str(health)
 	if health <= 0:
 		if not is_dead:
 			is_dead = true
@@ -136,6 +135,7 @@ func _on_area_3d_body_part_hit(dmg, critical_multi) -> void:
 		if $CollisionShape3D:
 			$CollisionShape3D.queue_free()
 		anim_tree.set("parameters/conditions/die", true)
+		$Hp.visible = false
 		emit_signal("zombie_died")
 		await get_tree().create_timer(6).timeout
 		queue_free()

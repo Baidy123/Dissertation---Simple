@@ -10,6 +10,9 @@ func weapon_upgrade():
 		damage_multi += 1
 		recoil_multi -= 0.2
 		bullet_spread -= 0.1
+		upgrade_money += upgrade_money
+		fullfill_money += fullfill_money * weapon_lvl
+		fullfill_ammo()
 		
 func fire_shot():
 	weapon_manager.play_anim(view_shoot_anim)

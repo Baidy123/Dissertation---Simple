@@ -23,47 +23,47 @@ var perception : int = 0
 	"1a": {
 		"name": "qinggong",
 		"description": "Enables double jumping and significantly enhances aerial maneuverability.",
-		"currency": 1
+		"cost": 7500
 	},
 	"1b": {
 		"name": "bullet time",
 		"description": "Slows down time.",
-		"currency": 1
+		"cost": 7500
 	},
 	"1c": {
 		"name": "tough skin",
 		"description": "Significantly reduces damage from enemy attacks.",
-		"currency": 1
+		"cost": 15000
 	},
 	"2a": {
 		"name": "deserter",
 		"description": "Greatly increases the character's movement speed in seconds after being attacked .",
-		"currency": 1
+		"cost": 5000
 	},
 	"2b": {
 		"name": "cowboy",
 		"description": "Greatly improves weapon accuracy while moving, reduces recoil.",
-		"currency": 1
+		"cost": 15000
 	},
 	"2c": {
 		"name": "pack rat",
 		"description": "Doubles the character's ammunition reserves.",
-		"currency": 1
+		"cost": 2500
 	},
 	"3a": {
 		"name": "vampire",
 		"description": "Restores a small amount of health after attacking an enemy in melee combat.",
-		"currency": 1
+		"cost": 7500
 	},
 	"3b": {
 		"name": "flak jacket",
 		"description": "Prevents the character from taking damage from explosions.",
-		"currency": 1
+		"cost": 7500
 	},
 	"3c": {
 		"name": "die hard",
 		"description": " Grants 2 seconds of invincibility when taking a fatal hit, with a cooldown of 4 minutes.",
-		"currency": 1
+		"cost": 15000
 	}
 }
 @export var bullet_time_cd := 0.0
@@ -147,10 +147,10 @@ func bullet_time():
 		return  
 	if bullet_time_cd != 0:
 		return
-	bullet_time_cd = 5.0
+	bullet_time_cd = 10
 	is_bullet_time_active = true
 	Engine.time_scale = slow_factor  
-	await get_tree().create_timer(1 * slow_factor).timeout
+	await get_tree().create_timer(6 * slow_factor).timeout
 	Engine.time_scale = 1.0  
 	is_bullet_time_active = false
 	bullet_time_cold_down()

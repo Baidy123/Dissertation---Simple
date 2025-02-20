@@ -1,7 +1,7 @@
-[gd_scene load_steps=67 format=4 uid="uid://db2h3t17k37pe"]
+[gd_scene load_steps=66 format=4 uid="uid://db2h3t17k37pe"]
 
 [ext_resource type="Texture2D" uid="uid://difglsmbfmw81" path="res://Map/Textures/terrain.jpg" id="1_v880l"]
-[ext_resource type="Script" path="res://Map/World.gd" id="1_yrgup"]
+[ext_resource type="Script" path="res://Map/world.gd" id="1_yrgup"]
 [ext_resource type="PackedScene" uid="uid://cf04lcfqmpyqp" path="res://Map/Models/Crypt/Crypt.tscn" id="3_bo0j1"]
 [ext_resource type="PackedScene" uid="uid://dfukgfktytrcy" path="res://Map/Models/Road/Road.tscn" id="4_kqjop"]
 [ext_resource type="PackedScene" uid="uid://dfhk8voo26lrt" path="res://Map/Models/BrickWall/brick_wall.tscn" id="5_diqle"]
@@ -34,7 +34,6 @@
 [ext_resource type="PackedScene" uid="uid://dsc6yq6mfbvet" path="res://Map/Models/Trees/pine_not_crooked.tscn" id="25_2dqm4"]
 [ext_resource type="PackedScene" uid="uid://dl6len7ofdorj" path="res://Map/Models/Trees/trunk.tscn" id="26_o4k17"]
 [ext_resource type="PackedScene" uid="uid://dghibg1q8ctm2" path="res://gui.tscn" id="28_t04ty"]
-[ext_resource type="PackedScene" uid="uid://dv5h2pyptm0nv" path="res://FpsControllor/player.tscn" id="31_jumwc"]
 [ext_resource type="PackedScene" uid="uid://bi1icrly36c3i" path="res://Map/Models/Barriers/detail_barrier2.tscn" id="36_krjaq"]
 [ext_resource type="PackedScene" uid="uid://cam2c246nyewx" path="res://Map/Models/Interactable/interactable_tree.tscn" id="37_nuue2"]
 [ext_resource type="PackedScene" uid="uid://unwcljahyed2" path="res://Map/Models/Interactable/buying_machine.tscn" id="37_r0re1"]
@@ -2843,7 +2842,7 @@ transform = Transform3D(0.0309572, 0, -0.999521, 0, 1, 0, 0.999521, 0, 0.0309572
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.842316, 2.97764, -1.02934)
 shape = SubResource("BoxShape3D_wc3fj")
 
-[node name="Area6" type="Area3D" parent="Map/NavigationRegion3D/GravesLeft" groups=["Area1", "Area6", "Area7"]]
+[node name="Area6" type="Area3D" parent="Map/NavigationRegion3D/GravesLeft" groups=["Area6"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5326, 0, -7.87893)
 script = ExtResource("19_ymwy0")
@@ -3066,7 +3065,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.742
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -1.60498, 1.34644, -0.841795)
 shape = SubResource("BoxShape3D_7bosv")
 
-[node name="Area3" type="Area3D" parent="Map/NavigationRegion3D/GravesRight" groups=["Area1", "Area3", "Area7"]]
+[node name="Area3" type="Area3D" parent="Map/NavigationRegion3D/GravesRight" groups=["Area3"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8964, 0, -6.42324)
 script = ExtResource("19_ymwy0")
@@ -4339,8 +4338,7 @@ transform = Transform3D(0.997968, 0, -0.0637136, 0, 1, 0, 0.0637136, 0, 0.997968
 [node name="AmmoCraft3" parent="Map/InteractableItems" instance=ExtResource("39_1gmvi")]
 transform = Transform3D(0.701631, 0, 0.712541, 0, 1, 0, -0.712541, 0, 0.701631, 23.1592, 0.413855, 19.2986)
 
-[node name="Player" parent="Map" groups=["Player"] instance=ExtResource("31_jumwc")]
-unique_name_in_owner = true
+[node name="PlayerPosition" type="Node3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0912757, 31)
 
 [node name="Spawns" type="Node3D" parent="Map"]
@@ -4431,5 +4429,4 @@ parameters/looping = true
 [connection signal="body_entered" from="Map/NavigationRegion3D/HouseRight/Area4" to="Map/NavigationRegion3D/HouseRight/Area4" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/NavigationRegion3D/TreesFrontLeft/Area5" to="Map/NavigationRegion3D/TreesFrontLeft/Area5" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/NavigationRegion3D/HouseLeft/Area8" to="Map/NavigationRegion3D/HouseLeft/Area8" method="_on_body_entered"]
-[connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]
 [connection signal="timeout" from="Map/Spawns/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

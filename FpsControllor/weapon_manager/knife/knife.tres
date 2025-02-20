@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("1_n17kf")
-max_hit_dist = 2.3
+max_hit_dist = 1.8
 miss_sound = ExtResource("1_cpxfk")
 name = "Knife"
 icon = ExtResource("1_c0snr")
@@ -39,7 +39,7 @@ max_fire_rate_ms = 500.0
 impact_force = 5.0
 v_recoil = 0.0
 h_recoil = 0.0
-damage = 10
+damage = 55
 has_lvl = true
 max_weapon_lvl = 3
 weapon_lvl = 0

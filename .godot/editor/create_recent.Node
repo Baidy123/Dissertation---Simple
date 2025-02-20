@@ -1,5 +1,7 @@
-AudioStreamPlayer
+Label
 Node3D
+AnimationPlayer
+AudioStreamPlayer
 Button
 VBoxContainer
 Camera3D
@@ -10,5 +12,3 @@ StaticBody3D
 Timer
 CharacterBody3D
 CSGPolygon3D
-Area3D
-AnimatableBody3D

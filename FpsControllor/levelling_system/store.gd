@@ -140,9 +140,9 @@ func _update_weapon_buttons() -> void:
 	for i in range(child_count):
 		var wbutton = parent_node.get_child(i+1)
 		# 取得按钮名称当作武器ID(或你可以 self-defined)
-		print(i)
+		#print(i)
 		var w_id = wbutton.name.to_lower()  
-		print(w_id)
+		#print(w_id)
 
 		# 如果 player.weapons 里没有这个w_id，就隐藏掉
 		if not character.weapons.has(w_id):
@@ -206,7 +206,8 @@ func load_perks():
 		var perk_id = button.get_name().to_lower()
 		var child_node = null
 		button.tooltip_text =  str(levelling_sys.perk_requirement[perk_id]["name"].to_upper()
-								+ ": " + levelling_sys.perk_requirement[perk_id]["description"])
+								+ ": " + levelling_sys.perk_requirement[perk_id]["description"]
+								+ "\n" + "Cost: " + str(levelling_sys.perk_requirement[perk_id]["cost"]))
 		button.pressed.connect(spend_perk_points.bind(button.name.to_lower())) 
 		if button.has_node("TextureRect"):
 			child_node = button.get_node("TextureRect")
@@ -241,8 +242,8 @@ func check_perk_requirements(perk_id: String) -> bool:
 
 
 				
-	if req_dict.has("currency"):
-		var required_val =  req_dict["currency"]
+	if req_dict.has("cost"):
+		var required_val =  req_dict["cost"]
 		if currency < required_val:
 			return false
 
@@ -257,8 +258,8 @@ func spend_perk_points(perk_id: String):
 		return
 	var req_dict = levelling_sys.perk_requirement[perk_id]
 	var cost = 1
-	if req_dict.has("currency"):
-		cost = req_dict["currency"]
+	if req_dict.has("cost"):
+		cost = req_dict["cost"]
 	character.perks[perk_id] = true
 	currency -= cost
 	%PerkPoints.set_text("$ " + str(currency))
@@ -276,9 +277,9 @@ func _process(delta):
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		queue_free()
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_cancel"):
+		#queue_free()
 	
 func _exit_tree(): 
 

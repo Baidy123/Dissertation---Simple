@@ -1,4 +1,11 @@
+D:/
 res://Map/Models/Interactable
+res://FpsControllor/weapon_manager/axe
+res://FpsControllor/weapon_manager/sawed_off
+res://FpsControllor/weapon_manager/m4
+res://FpsControllor/weapon_manager
+res://FpsControllor/weapon_manager/ak47
+res://FpsControllor/weapon_manager/aa12
 res://models/enemy
 res://Map/Models/Trees
 res://Map
@@ -9,12 +16,7 @@ res://FpsControllor/weapon_manager/glock
 res://models/Enemy
 res://FpsControllor/levelling_system
 res://FpsControllor/weapon_manager/shotgun
-res://FpsControllor/weapon_manager
 res://FpsControllor/weapon_manager/player_hud
 res://FpsControllor/weapon_manager/grenade
 res://FpsControllor/weapon_manager/sounds
 res://FpsControllor/weapon_manager/rpg
-E:/Godot/StarterProject/FpsControllor/weapon_manager/p90
-E:/Godot/StarterProject/FpsControllor/weapon_manager/deagle
-res://FpsControllor/weapon_manager/p90
-res://FpsControllor/weapon_manager/deagle

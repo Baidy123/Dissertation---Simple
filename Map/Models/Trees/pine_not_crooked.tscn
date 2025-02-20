@@ -95,7 +95,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s7chn")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycxdt"]
-radius = 0.511
+radius = 1.5
 height = 7.154
 
 [node name="pine" type="StaticBody3D"]

@@ -12,49 +12,12 @@ const HEADBOB_FREQUENCY = 2.4
 var headbob_time = 0.0
 
 signal player_hit()
+signal player_died()
 #Character stats
 @export var health := 100.0
 @export var max_health := 100.0
 @export var currency := 1000
-#@export var medicine := 10
-#@export var aptitude : String = " "
-#@export var attribute_available_points :int = 6
-#
-#@export var attributes = {
-	#"constitution" : 4,
-	#"strength" : 5,
-	#"perception" : 6
-#}
-#@export var skill_available_points :int = 10
-#
-#@export var skills = {
-	#"endurance" = 0,
-	#"resilience" = 0,
-	#"melee" = 0,
-	#"intimidation" = 0,
-	#"handguns" = 0,
-	#"longguns" = 0
-#}
-#
-#var skills_influence = {
-	#"endurance" : 1,
-	#"resilience" : 0,
-	#"melee" : 1,
-	#"intimidation" : 0,
-	#"handguns" : 0,
-	#"longguns" : 0
-#} 
-#
-#var skills_attribute = {
-	#"endurance": 0,
-	#"resilience": 0,
-	#"melee": 0,
-	#"intimidation": 0,
-	#"handguns": 0,
-	#"longguns": 0
-#}
-#@export var perk_available_points :int = 0
-#
+
 @export var perks = {
 	"1a" : false,
 	"1b" : false,
@@ -71,7 +34,7 @@ signal player_hit()
 	"deagle" :  {
 				"name" : "deagle",
 				"owned" : false,
-				"price" : 1,
+				"price" : 700,
 				"type": "weapon",
 				"description" : "This is the Description for deagle",
 				"file_path": "res://FpsControllor/weapon_manager/deagle/deagle.tres"
@@ -79,7 +42,7 @@ signal player_hit()
 	"p90" : 	    {
 				"name" : "p90",
 				"owned" : false,
-				"price" : 1,
+				"price" : 2350,
 				"type": "weapon",
 				"description" : "This is the Description for p90",
 				"file_path": "res://FpsControllor/weapon_manager/p90/p90.tres"
@@ -95,7 +58,7 @@ signal player_hit()
 	"rpg" :     {
 				"name" : "rpg",
 				"owned" : false,
-				"price" : 1,
+				"price" : 10000,
 				"type": "weapon",
 				"description" : "This is the Description for rpg",
 				"file_path": "res://FpsControllor/weapon_manager/rpg/rpg.tres"
@@ -111,49 +74,49 @@ signal player_hit()
 	"m4" :		{
 				"name" : "m4",
 				"owned" : false,
-				"price" : 1,
+				"price" : 2900,
 				"type": "weapon",
 				"description" : "This is the Description for m4",
-				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				"file_path": "res://FpsControllor/weapon_manager/m4/m4.tres"
 				},
 	"ak47" :	{
 				"name" : "ak47",
 				"owned" : false,
-				"price" : 1,
+				"price" : 2700,
 				"type": "weapon",
 				"description" : "This is the Description for ak47",
-				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				"file_path": "res://FpsControllor/weapon_manager/ak47/ak47.tres"
 				},
 	"aa12" :	{
 				"name" : "aa12",
 				"owned" : false,
-				"price" : 1,
+				"price" : 5000,
 				"type": "weapon",
 				"description" : "This is the Description for aa12",
-				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				"file_path": "res://FpsControllor/weapon_manager/aa12/aa12.tres"
 				},
 	"axe" :		{
 				"name" : "axe",
 				"owned" : false,
-				"price" : 1,
+				"price" : 1000,
 				"type": "weapon",
 				"description" : "This is the Description for axe",
-				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				"file_path": "res://FpsControllor/weapon_manager/axe/axe.tres"
 				},
 	"sawed_off" :		{
 				"name" : "sawed_off",
 				"owned" : false,
-				"price" : 1,
+				"price" : 1050,
 				"type": "weapon",
 				"description" : "This is the Description for sawed_off",
-				"file_path": "res://FpsControllor/weapon_manager/grenade/grenade.tres"
+				"file_path": "res://FpsControllor/weapon_manager/sawed_off/sawed_off.tres"
 				},
 	"medkit": 	{
 				"name": "Medkit",
-				"price": 50,
-				"description": "Heals 50 HP",
+				"price": 500,
+				"description": "Heals 35 HP",
 				"type": "medkit",          # 标记这是医疗箱
-				"max_quantity": 3,
+				"max_quantity": 5,
 				"owned_quantity": 0
 				}
 }
@@ -191,10 +154,14 @@ const WORLD_MODEL_LAYER = 2
 const CROUCH_TRANSLATE = 0.7
 
 var is_crouched := false
-
+var gui
 
 
 func _ready() -> void:
+	if OS.has_feature("debug"):
+		currency = 1000000
+	if has_node("../../GUI"):
+		gui = get_node("../../GUI")
 	update_viwe_and_world_model_masks()
 	
 		
@@ -210,8 +177,10 @@ func update_viwe_and_world_model_masks():
 			child.cast_shadow = false
 	%Camera3D.set_cull_mask_value(WORLD_MODEL_LAYER,false)
 	
-var dmg_reduce_rate : float = 0
+var is_died = false
 func take_damage(damage: float, dmg_type: String = " "):
+	if is_died == true:
+		return
 	if $LevellingSystem.die_hard_active:
 		return
 	if perks["3b"] == true:
@@ -230,7 +199,9 @@ func take_damage(damage: float, dmg_type: String = " "):
 			health = 1
 		else:
 			health = 0
-			get_tree().change_scene_to_file("res://Map/MainMenu/MainMenu.tscn")
+			is_died = true
+			gui._on_player_died()
+			
 			
 func use_medic():
 	var medicine = weapons["medkit"]["owned_quantity"]

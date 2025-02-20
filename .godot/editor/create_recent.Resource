@@ -1,3 +1,4 @@
-WeaponResource
+MeleeWeaponResource
 ShotgunWeaponResource
+WeaponResource
 ProjectileWeaponResource

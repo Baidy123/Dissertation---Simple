@@ -43,7 +43,8 @@ extends Node3D
 @onready var spawns = $Map/Spawns
 @onready var map = $Map
 @onready var spawn_timer = %SpawnTimer
-@onready var player = %Player
+#@onready var player = %Player
+@onready var player_scene = load("res://FpsControllor/player.tscn")
 # 载入你僵尸预制体
 var zombie_scene = load("res://models/enemy/enemy.tscn")
 
@@ -72,6 +73,9 @@ var door_unlocked :int = 0
 
 var hud
 func _ready() -> void:
+	var player = player_scene.instantiate()
+	$Map.add_child(player)
+	player.position = $Map/PlayerPosition.position
 	hud = player.get_node("PlayerHUD").get_node("WaveNotice")
 	hud.visible = true
 	hud.text = "WAVE: " + str(current_wave)
